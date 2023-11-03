@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane prefHeight="710.0" prefWidth="1202.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiWAdv.Tela03ConsultaProcessoController">
+   <content>
+      <TabPane fx:id="tabPaneEdit" prefHeight="715.0" prefWidth="1195.0" stylesheets="@styles.css">
+         <tabs>
+            <Tab fx:id="tabConsutaProcesso">
+               <content>
+                  <AnchorPane prefHeight="681.0" prefWidth="1221.0">
+                     <children>
+                        <ImageView fitHeight="671.0" fitWidth="1259.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../guiWAdvImagens/9.png" />
+                           </image>
+                        </ImageView>
+                        <ListView fx:id="listaResultados" layoutX="411.0" layoutY="196.0" onMousePressed="#onSelecionarProcesso" onTouchPressed="#onSelecionarProcesso" prefHeight="100.0" prefWidth="589.0" />
+                        <ComboBox fx:id="clienteComboBox1" layoutX="414.0" layoutY="157.0" prefHeight="25.0" prefWidth="591.0" promptText="Selecione aqui o cliente" />
+                        <Label fx:id="ResultadoNomedoCliente" layoutX="407.0" layoutY="309.0" prefHeight="21.0" prefWidth="560.0" />
+                        <Label fx:id="ResultadoNumerodoProcesso" layoutX="404.0" layoutY="339.0" prefHeight="21.0" prefWidth="564.0" />
+                        <Label fx:id="ResultadoComarcadoProcesso" layoutX="400.0" layoutY="374.0" prefHeight="21.0" prefWidth="209.0" />
+                        <Label fx:id="ResultadoVaradoProcesso" layoutX="687.0" layoutY="374.0" prefHeight="21.0" prefWidth="207.0" />
+                        <Label fx:id="ResultadoTemadoProcesso" layoutX="954.0" layoutY="375.0" prefHeight="21.0" prefWidth="110.0" />
+                        <Label fx:id="ResultadoValordoProcesso" layoutX="407.0" layoutY="420.0" prefHeight="21.0" prefWidth="154.0" />
+                        <Label fx:id="ResultadoValordosHonorarios" layoutX="678.0" layoutY="406.0" prefHeight="21.0" prefWidth="73.0" />
+                        <TextArea fx:id="ResultadosMovimentos" layoutX="414.0" layoutY="486.0" prefHeight="100.0" prefWidth="587.0" wrapText="true" />
+                        <TextField fx:id="txtDataMovimento" layoutX="408.0" layoutY="596.0" prefHeight="30.0" prefWidth="111.0" promptText="Data" />
+                        <TextField fx:id="txtDescricaoMovimento" layoutX="565.0" layoutY="594.0" prefHeight="20.0" prefWidth="420.0" promptText="Descrição" />
+                        <Label fx:id="ResultadoStatus" layoutX="964.0" layoutY="420.0" prefHeight="21.0" prefWidth="100.0">
+                           <font>
+                              <Font name="System Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnConsultarRec" layoutX="1052.0" layoutY="106.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="77.0" />
+                        <Label fx:id="ResultadoMatricula" layoutX="401.0" layoutY="461.0" prefHeight="21.0" prefWidth="102.0" />
+                        <Button fx:id="btnLimparTela" layoutX="1006.0" layoutY="26.0" mnemonicParsing="false" onAction="#limparTela" prefHeight="65.0" prefWidth="74.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnEditarProcesso" layoutX="1036.0" layoutY="239.0" mnemonicParsing="false" onAction="#btnEditarProcesso" prefHeight="50.0" prefWidth="56.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnIserirMovimento" layoutX="1033.0" layoutY="590.0" mnemonicParsing="false" onAction="#inserirMovimento" prefHeight="44.0" prefWidth="46.0" />
+                        <Button fx:id="btnExibirMovimento" layoutX="319.0" layoutY="516.0" mnemonicParsing="false" onAction="#exibirMovimento" prefHeight="42.0" prefWidth="39.0">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="tabEditarProcesso">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="681.0" fitWidth="1187.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../guiWAdvImagens/10.png" />
+                           </image>
+                        </ImageView>
+                        <ListView fx:id="listaResultados2Editar" layoutX="423.0" layoutY="199.0" onMousePressed="#onSelecionarProcessoTabEditar" onTouchPressed="#onSelecionarProcessoTabEditar" prefHeight="90.0" prefWidth="578.0" />
+                        <ComboBox fx:id="clienteComboBox2Editar" layoutX="423.0" layoutY="160.0" prefHeight="25.0" prefWidth="581.0" promptText="Selecione aqui o cliente" />
+                        <TextField fx:id="txtDataMovimentoEditar" layoutX="405.0" layoutY="590.0" prefHeight="20.0" prefWidth="100.0" promptText="Data" />
+                        <TextField fx:id="txtDescricaoMovimentoEditar" layoutX="562.0" layoutY="590.0" prefHeight="20.0" prefWidth="415.0" promptText="Descrição" />
+                        <TextField fx:id="txtNumeroProc" layoutX="402.0" layoutY="333.0" prefHeight="20.0" prefWidth="555.0" />
+                        <TextField fx:id="txtComarcaProc" layoutX="405.0" layoutY="367.0" prefHeight="20.0" prefWidth="160.0" />
+                        <TextField fx:id="txtVaraProc" layoutX="666.0" layoutY="367.0" prefHeight="20.0" prefWidth="160.0" />
+                        <TextField fx:id="txtTemaProc" layoutX="953.0" layoutY="367.0" prefHeight="20.0" prefWidth="160.0" />
+                        <TextField fx:id="txtValorProc" layoutX="402.0" layoutY="409.0" prefHeight="20.0" prefWidth="160.0" />
+                        <TextField fx:id="txtHonoProc" layoutX="666.0" layoutY="408.0" prefHeight="20.0" prefWidth="160.0" />
+                        <Label fx:id="ResultadoNomedoCliente2" layoutX="405.0" layoutY="306.0" prefHeight="21.0" prefWidth="560.0" />
+                        <ListView fx:id="ResultadosMovimentosEditar" layoutX="420.0" layoutY="489.0" prefHeight="88.0" prefWidth="553.0" />
+                        <Label fx:id="IdHistorico" layoutX="292.0" layoutY="512.0" prefHeight="21.0" prefWidth="29.0">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtStatus" layoutX="953.0" layoutY="408.0" prefHeight="20.0" prefWidth="160.0" />
+                        <Label fx:id="labelIdProcEditar" layoutX="292.0" layoutY="562.0" prefHeight="21.0" prefWidth="45.0">
+                           <font>
+                              <Font name="System Italic" size="6.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtMatricula" layoutX="395.0" layoutY="449.0" prefHeight="20.0" prefWidth="160.0" />
+                        <Button fx:id="btnLimparTela1" layoutX="994.0" layoutY="26.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="77.0" />
+                        <Button fx:id="VoltarEditarProc" layoutX="1091.0" layoutY="34.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="70.0" />
+                        <Button fx:id="btnEditarMovimento" layoutX="1026.0" layoutY="577.0" mnemonicParsing="false" onAction="#handleEditarMovimento" prefHeight="45.0" prefWidth="45.0" />
+                        <Button fx:id="btnConcluirEdicao" layoutX="1038.0" layoutY="234.0" mnemonicParsing="false" onAction="#onConcluirEdicaoButtonClick" prefHeight="45.0" prefWidth="45.0" />
+                        <Button fx:id="btnExcluirProcesso" layoutX="1095.0" layoutY="233.0" mnemonicParsing="false" onAction="#onExcluirProcessoButtonClick" prefHeight="45.0" prefWidth="45.0" />
+                        <Button fx:id="btnExibirMovimentoEditar" layoutX="319.0" layoutY="511.0" mnemonicParsing="false" onAction="#exibirMovimentoeditar" prefHeight="45.0" prefWidth="45.0">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="tabConsultaRec">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="667.0" fitWidth="1223.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../guiWAdvImagens/11.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txtClienteRec" layoutX="413.0" layoutY="156.0" prefHeight="25.0" prefWidth="580.0" />
+                        <ListView fx:id="listClienteRec" layoutX="413.0" layoutY="193.0" prefHeight="99.0" prefWidth="581.0" />
+                        <ListView fx:id="listAndamentosRec" layoutX="413.0" layoutY="483.0" prefHeight="96.0" prefWidth="579.0" />
+                        <TextField fx:id="txtDataAndamentoRec" layoutX="403.0" layoutY="588.0" prefHeight="32.0" prefWidth="114.0" />
+                        <TextField fx:id="txtDescAndamentoRec" layoutX="550.0" layoutY="588.0" prefHeight="32.0" prefWidth="450.0" />
+                        <Label fx:id="labelProcOrigem" layoutX="403.0" layoutY="373.0" prefHeight="21.0" prefWidth="518.0" />
+                        <Label fx:id="labelTipo" layoutX="399.0" layoutY="410.0" prefHeight="21.0" prefWidth="151.0" />
+                        <Label fx:id="labelRecorrenteRecorrido" layoutX="676.0" layoutY="410.0" prefHeight="21.0" prefWidth="150.0" />
+                        <Label fx:id="labelStatusRec" layoutX="946.0" layoutY="410.0" prefHeight="21.0" prefWidth="121.0" />
+                        <Label fx:id="labelJulgador" layoutX="413.0" layoutY="451.0" prefHeight="21.0" prefWidth="229.0" />
+                        <Label fx:id="labelRelator" layoutX="945.0" layoutY="451.0" prefHeight="21.0" prefWidth="173.0" />
+                        <Label fx:id="labelNumeroRecurso" layoutX="413.0" layoutY="309.0" prefHeight="21.0" prefWidth="519.0" />
+                        <Button fx:id="btnLimpaTelaConsultaRec" layoutX="1000.0" layoutY="29.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="72.0" />
+                        <Button fx:id="btnVoltarPagInicial" layoutX="1086.0" layoutY="36.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="64.0" />
+                        <Button fx:id="btnBuscarNomeClienteRec" layoutX="1032.0" layoutY="154.0" mnemonicParsing="false" onAction="#buscarNomesClientes" prefHeight="50.0" prefWidth="50.0" />
+                        <Button fx:id="btnEditarRec" layoutX="1032.0" layoutY="243.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                        <Button fx:id="btnExibirAndamentosRec" layoutX="321.0" layoutY="509.0" mnemonicParsing="false" onAction="#exibirAndamentosRec" prefHeight="45.0" prefWidth="45.0" />
+                        <Button fx:id="btnInserirAndamentosRec" layoutX="1022.0" layoutY="582.0" mnemonicParsing="false" onAction="#inserirAndamentoRec" prefHeight="45.0" prefWidth="45.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="tabEditaRec">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="677.0" fitWidth="1186.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../guiWAdvImagens/12.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txtBuscaClienteEditRec" layoutX="400.0" layoutY="146.0" prefHeight="32.0" prefWidth="602.0" />
+                        <ListView fx:id="listClienteEditRec" layoutX="400.0" layoutY="184.0" prefHeight="99.0" prefWidth="591.0" />
+                        <ListView fx:id="listAndamentoRecEdit" layoutX="407.0" layoutY="476.0" prefHeight="98.0" prefWidth="588.0" />
+                        <TextField fx:id="txtDataAndamentoEdit" layoutX="407.0" layoutY="583.0" prefHeight="20.0" prefWidth="100.0" />
+                        <TextField fx:id="txtDescricaoAndamentoEdit" layoutX="550.0" layoutY="583.0" prefHeight="32.0" prefWidth="453.0" />
+                        <Label fx:id="labelIDAndamento" layoutX="1018.0" layoutY="498.0" prefHeight="20.0" prefWidth="34.0" />
+                        <Label fx:id="labelIDRec" layoutX="1016.0" layoutY="547.0" prefHeight="20.0" prefWidth="38.0" />
+                        <TextField fx:id="txtNumeroRecEdit" layoutX="400.0" layoutY="296.0" prefHeight="20.0" prefWidth="550.0" />
+                        <Label fx:id="labelNomeClienteEditRec" layoutX="391.0" layoutY="334.0" prefHeight="21.0" prefWidth="522.0" />
+                        <TextField fx:id="txtProcOrig" layoutX="400.0" layoutY="358.0" prefHeight="20.0" prefWidth="550.0" />
+                        <TextField fx:id="txtTipoRec" layoutX="400.0" layoutY="394.0" prefHeight="20.0" prefWidth="150.0" />
+                        <TextField fx:id="txtRecorridoRecorrente" layoutX="675.0" layoutY="394.0" prefHeight="20.0" prefWidth="150.0" />
+                        <TextField fx:id="txtStatusRec" layoutX="949.0" layoutY="394.0" prefHeight="20.0" prefWidth="150.0" />
+                        <TextField fx:id="txtJulgadorRec" layoutX="400.0" layoutY="435.0" prefHeight="20.0" prefWidth="150.0" />
+                        <TextField fx:id="txtRelatorRec" layoutX="950.0" layoutY="435.0" prefHeight="20.0" prefWidth="160.0" />
+                        <Label fx:id="labelNomeEditRec" layoutX="393.0" layoutY="334.0" prefHeight="21.0" prefWidth="518.0" />
+                        <Button fx:id="btnLimpaTelaEditaRec" layoutX="996.0" layoutY="17.0" mnemonicParsing="false" onAction="#limparTela3" prefHeight="70.0" prefWidth="78.0" />
+                        <Button fx:id="btnVoltarConsultarRec" layoutX="1083.0" layoutY="21.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="68.0" />
+                        <Button fx:id="btnBuscaClienteEditRec" layoutX="1030.0" layoutY="149.0" mnemonicParsing="false" onAction="#buscarNomesClientesEdita" prefHeight="50.0" prefWidth="50.0" />
+                        <Button fx:id="btnConcluirEditRec" layoutX="1033.0" layoutY="221.0" mnemonicParsing="false" onAction="#atualizarRecurso" prefHeight="45.0" prefWidth="45.0" />
+                        <Button fx:id="btnexibirAndamentosEdit" layoutX="319.0" layoutY="503.0" mnemonicParsing="false" onAction="#exibirAndamentosRecEditar" prefHeight="45.0" prefWidth="45.0" />
+                        <Button fx:id="btnEditarAndamentoRec" layoutX="1024.0" layoutY="567.0" mnemonicParsing="false" onAction="#handleEditarAndamento" prefHeight="45.0" prefWidth="45.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </content>
+</ScrollPane>

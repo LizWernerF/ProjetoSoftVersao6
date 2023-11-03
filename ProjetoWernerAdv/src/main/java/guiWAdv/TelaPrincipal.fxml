@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1254.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiWAdv.Tela01PrincipalController">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="724.0" prefWidth="1251.0" stylesheets="@styles.css">
+         <children>
+            <TabPane fx:id="tabPane" prefHeight="732.0" prefWidth="1258.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab fx:id="tabIniciar">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="753.0" prefWidth="1339.0">
+                           <children>
+                              <ImageView fitHeight="710.0" fitWidth="1250.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../guiWAdvImagens/Home.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="btnIniciar" layoutX="562.0" layoutY="344.0" mnemonicParsing="false" prefHeight="281.0" prefWidth="313.0">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="26.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab fx:id="tabHome">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="708.0" fitWidth="1268.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../guiWAdvImagens/2.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="btnConsultar" layoutX="909.0" layoutY="65.0" mnemonicParsing="false" prefHeight="297.0" prefWidth="271.0">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnCadastrar" layoutX="625.0" layoutY="69.0" mnemonicParsing="false" prefHeight="292.0" prefWidth="268.0">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnTABPANEGerarDoc" layoutX="626.0" layoutY="363.0" mnemonicParsing="false" onAction="#btnTABPANEGerarDoc" prefHeight="292.0" prefWidth="266.0">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnVoltar" layoutX="1167.0" layoutY="24.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="76.0" />
+                              <Button layoutX="908.0" layoutY="362.0" mnemonicParsing="false" prefHeight="298.0" prefWidth="273.0">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="278.0" layoutY="296.0" mnemonicParsing="false" prefHeight="364.0" prefWidth="330.0" />
+                              <Button fx:id="btnTABPANECalculos" layoutX="822.0" layoutY="387.0" mnemonicParsing="false" onAction="#btnTABPANECalculos" prefHeight="63.0" prefWidth="47.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab fx:id="tabCadastros">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="719.0" fitWidth="1260.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../guiWAdvImagens/3.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="btnVoltar2" layoutX="1144.0" layoutY="32.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="78.0" />
+                              <Button fx:id="btnNovocliente" layoutX="278.0" layoutY="293.0" mnemonicParsing="false" prefHeight="351.0" prefWidth="301.0">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnNovoprocesso" layoutX="600.0" layoutY="291.0" mnemonicParsing="false" prefHeight="357.0" prefWidth="301.0">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnNovoRecurso" layoutX="919.0" layoutY="293.0" mnemonicParsing="false" prefHeight="352.0" prefWidth="303.0">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab fx:id="tabCadastrosClientes">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="623.0" prefWidth="993.0">
+                           <children>
+                              <ImageView fitHeight="705.0" fitWidth="1290.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../guiWAdvImagens/4.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField fx:id="txtNome" layoutX="436.0" layoutY="186.0" prefHeight="20.0" prefWidth="733.0" />
+                              <TextField fx:id="txtTelefone" layoutX="431.0" layoutY="227.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="txtCpf" layoutX="719.0" layoutY="229.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="txtRg" layoutX="1006.0" layoutY="231.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="txtNacionalidade" layoutX="431.0" layoutY="271.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="txtEstCivil" layoutX="719.0" layoutY="273.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="txtProfissao" layoutX="1006.0" layoutY="274.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="txtIdFuncional" layoutX="431.0" layoutY="313.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="txtDatanscimento" layoutX="1006.0" layoutY="313.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="txtEndereco" layoutX="433.0" layoutY="355.0" prefHeight="20.0" prefWidth="733.0" />
+                              <TextField fx:id="txtCidade" layoutX="431.0" layoutY="398.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="txtEstado" layoutX="719.0" layoutY="399.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="txtCep" layoutX="1006.0" layoutY="400.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="txtMat1" layoutX="397.0" layoutY="495.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="BoxRef1" layoutX="607.0" layoutY="495.0" prefHeight="20.0" prefWidth="35.0" />
+                              <TextField fx:id="BoxCargH1" layoutX="383.0" layoutY="526.0" prefHeight="32.0" prefWidth="49.0" />
+                              <TextField fx:id="DataInicio1" layoutX="397.0" layoutY="593.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="txtCargo" layoutX="397.0" layoutY="559.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="BoxNivelatual1" layoutX="474.0" layoutY="526.0" prefHeight="32.0" prefWidth="45.0" />
+                              <TextField fx:id="txtTrienioatual1" layoutX="599.0" layoutY="526.0" prefHeight="32.0" prefWidth="43.0" />
+                              <TextField fx:id="txtMat2" layoutX="848.0" layoutY="493.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="BoxRef2" layoutX="1069.0" layoutY="495.0" prefHeight="32.0" prefWidth="50.0" />
+                              <TextField fx:id="BoxCargh2" layoutX="848.0" layoutY="526.0" prefHeight="20.0" prefWidth="35.0" />
+                              <TextField fx:id="datainicio2" layoutX="848.0" layoutY="593.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="txtCargo2" layoutX="848.0" layoutY="559.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="BoxNivelatual2" layoutX="940.0" layoutY="526.0" prefHeight="32.0" prefWidth="53.0" />
+                              <TextField fx:id="txtTrienioatual2" layoutX="1062.0" layoutY="526.0" prefHeight="32.0" prefWidth="48.0" />
+                              <TextField fx:id="txtDataaposentadoria2" layoutX="848.0" layoutY="623.0" prefHeight="20.0" prefWidth="160.0" />
+                              <Button fx:id="btnNovoCadastroCliente" layoutX="1062.0" layoutY="24.0" mnemonicParsing="false" onAction="#onBtnLimparTelaCadastroCliente" prefHeight="87.0" prefWidth="82.0" />
+                              <Button fx:id="btnVoltar3" layoutX="1150.0" layoutY="35.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="80.0">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></Button>
+                              <Button fx:id="btnCadastrarCliente" layoutX="1203.0" layoutY="632.0" mnemonicParsing="false" onAction="#onBtnCadastrarClienteAction" prefHeight="46.0" prefWidth="53.0">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                              <TextField fx:id="txtdataaposentadoria1" layoutX="394.0" layoutY="626.0" prefHeight="20.0" prefWidth="160.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab fx:id="tabCadastrosProcessos">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="706.0" fitWidth="1293.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../guiWAdvImagens/5.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField fx:id="txtNumeroProcesso" layoutX="433.0" layoutY="207.0" prefHeight="20.0" prefWidth="715.0" promptText="Informe o número do processo">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="buscarNome" layoutX="433.0" layoutY="242.0" prefHeight="20.0" prefWidth="610.0" promptText="Digite aqui o nome">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtComarca" layoutX="425.0" layoutY="479.0" prefHeight="20.0" prefWidth="160.0" promptText="Informe a Comarca">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVara" layoutX="711.0" layoutY="481.0" prefHeight="20.0" prefWidth="160.0" promptText="Informe a Vara">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtTema" layoutX="997.0" layoutY="484.0" prefHeight="20.0" prefWidth="160.0" promptText="Informe: Interníveis, Nova Escola ou Piso">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtValorCausa" layoutX="425.0" layoutY="523.0" prefHeight="20.0" prefWidth="160.0" promptText="Insira o valor pretendido">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtValorHonorarios" layoutX="711.0" layoutY="526.0" prefHeight="20.0" prefWidth="160.0" promptText="Insira o percentual">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtStatusProc" layoutX="997.0" layoutY="528.0" prefHeight="20.0" prefWidth="160.0" promptText="Insira o Status" />
+                              <TextField fx:id="txtMatriculaProc" layoutX="425.0" layoutY="568.0" prefHeight="20.0" prefWidth="160.0" promptText="Insira a Matricula" />
+                              <Button fx:id="btnVoltar31" layoutX="1151.0" layoutY="44.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="69.0" />
+                              <Button fx:id="btnBuscarClientes" layoutX="1091.0" layoutY="242.0" mnemonicParsing="false" onAction="#buscarNomesClientesCadProc" prefHeight="49.0" prefWidth="54.0" />
+                              <Button fx:id="btnCadastrarprocesso" layoutX="620.0" layoutY="566.0" mnemonicParsing="false" onAction="#onBtnCadastrarProcessoAction" prefHeight="50.0" prefWidth="50.0" />
+                              <Label fx:id="labelNomeClienteCadastroProc" layoutX="433.0" layoutY="435.0" prefHeight="20.0" prefWidth="610.0" />
+                              <ListView fx:id="listResultadoListView" layoutX="433.0" layoutY="283.0" prefHeight="137.0" prefWidth="610.0" />
+                              <Label fx:id="labelMat1CadProc" layoutX="1101.0" layoutY="342.0" prefHeight="20.0" prefWidth="100.0" />
+                              <Label fx:id="labelMat2CadProc" layoutX="1101.0" layoutY="372.0" prefHeight="20.0" prefWidth="100.0" />
+                              <Button fx:id="btnLimparTela" layoutX="1061.0" layoutY="44.0" mnemonicParsing="false" onAction="#limparTelaCadastroProcesso" prefHeight="74.0" prefWidth="81.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab fx:id="tabCadastrosRecursos">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="680.0" prefWidth="1033.0">
+                           <children>
+                              <ImageView fitHeight="708.0" fitWidth="1376.0" layoutX="-2.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../guiWAdvImagens/6.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField fx:id="txtnumerorecurso" layoutX="435.0" layoutY="202.0" prefHeight="20.0" prefWidth="716.0" promptText="Informe o número do recurso">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="buscarNomeRec" layoutX="435.0" layoutY="238.0" prefHeight="20.0" prefWidth="613.0" promptText="Digite aqui o nome">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtTiporecurso" layoutX="427.0" layoutY="512.0" prefHeight="20.0" prefWidth="160.0" promptText="Informe o tipo de recurso ex: Agravo de instrumento, Apelação...">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtRecorridorecorrente" layoutX="716.0" layoutY="512.0" prefHeight="20.0" prefWidth="160.0" promptText="Informe aqui">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtStatus" layoutX="1012.0" layoutY="514.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="txtJulgador" layoutX="427.0" layoutY="570.0" prefHeight="20.0" prefWidth="160.0" />
+                              <TextField fx:id="txtRelator" layoutX="716.0" layoutY="573.0" prefHeight="20.0" prefWidth="160.0" />
+                              <Button fx:id="btnLimparTelaRec" layoutX="1066.0" layoutY="38.0" mnemonicParsing="false" onAction="#limparTelaCadastroRecurso" prefHeight="69.0" prefWidth="83.0" />
+                              <Button fx:id="btnVoltar32" layoutX="1151.0" layoutY="43.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="73.0" />
+                              <Button fx:id="btnBuscarClientes1" layoutX="1092.0" layoutY="238.0" mnemonicParsing="false" onAction="#buscarNomesClientesCadRec" prefHeight="51.0" prefWidth="51.0" />
+                              <Button fx:id="btnCadastrarrecurso" layoutX="897.0" layoutY="571.0" mnemonicParsing="false" onAction="#onBtnCadastrarRecursoAction" prefHeight="48.0" prefWidth="53.0" text="      " />
+                              <Label fx:id="labelNomeDoClienteCadRec" layoutX="426.0" layoutY="433.0" prefHeight="20.0" prefWidth="580.0" />
+                              <Label fx:id="labelNumeroProcCadRec" layoutX="425.0" layoutY="474.0" prefHeight="20.0" prefWidth="582.0" />
+                              <ListView fx:id="listResultadoListViewCadRec" layoutX="435.0" layoutY="277.0" prefHeight="139.0" prefWidth="613.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab fx:id="tabConsultar">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="712.0" fitWidth="1254.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../guiWAdvImagens/7.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="btnNovoprocesso1" layoutX="596.0" layoutY="293.0" mnemonicParsing="false" onAction="#btnNovoprocesso1" prefHeight="353.0" prefWidth="299.0">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnTabBuscas" layoutX="912.0" layoutY="288.0" mnemonicParsing="false" prefHeight="362.0" prefWidth="304.0">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnVoltar21" layoutX="1158.0" layoutY="54.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="74.0" />
+                              <Button fx:id="btnNovocliente1" layoutX="275.0" layoutY="292.0" mnemonicParsing="false" onAction="#btnNovocliente1" prefHeight="352.0" prefWidth="302.0">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab fx:id="TabBuscas" text="Busca">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="709.0" fitWidth="1324.0" layoutX="-2.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../guiWAdvImagens/8.png" />
+                                 </image>
+                              </ImageView>
+                              <TabPane layoutX="72.0" layoutY="151.0" prefHeight="542.0" prefWidth="1111.0" stylesheets="@styles.css" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                  <Tab text="Nome">
+                                    <content>
+                                          <ScrollPane prefHeight="506.0" prefWidth="890.0">
+                                             <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="1109.0">
+                                                   <children>
+                                                      <Label layoutX="66.0" layoutY="19.0" text="Nome:" />
+                                                      <TextField fx:id="txtBuscaPorNomeTabBuscaProcNome" layoutX="120.0" layoutY="14.0" prefHeight="31.0" prefWidth="661.0" stylesheets="@styles.css" />
+                                                      <ListView fx:id="listResultadosNumerosTabBuscaProcNome" layoutX="120.0" layoutY="60.0" prefHeight="200.0" prefWidth="868.0" stylesheets="@styles.css" />
+                                                      <TextArea layoutX="120.0" layoutY="268.0" prefHeight="200.0" prefWidth="846.0" />
+                                                      <Button fx:id="btnBuscarTabBuscaProcNome" layoutX="820.0" layoutY="22.0" mnemonicParsing="false" text="Button" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </ScrollPane>
+                                    </content>
+                                  </Tab>
+                                    <Tab text="Numero">
+                                       <content>
+                                          <ScrollPane prefHeight="540.0" prefWidth="890.0">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="1114.0">
+                                                   <children>
+                                                      <Label layoutX="60.0" layoutY="62.0" text="Numero:" />
+                                                      <TextField layoutX="120.0" layoutY="57.0" prefHeight="31.0" prefWidth="661.0" />
+                                                      <ListView layoutX="120.0" layoutY="103.0" prefHeight="200.0" prefWidth="661.0" />
+                                                      <Button layoutX="795.0" layoutY="57.0" mnemonicParsing="false" text="Busca" />
+                                                      <Label layoutX="120.0" layoutY="315.0" text="Nome" />
+                                                      <Label layoutX="120.0" layoutY="344.0" text="Numero" />
+                                                      <Label layoutX="118.0" layoutY="377.0" text="Comarca" />
+                                                      <Label layoutX="411.0" layoutY="377.0" text="Vara" />
+                                                      <Label layoutX="118.0" layoutY="412.0" text="Tema" />
+                                                      <Label layoutX="409.0" layoutY="412.0" text="Valor" />
+                                                      <Label layoutX="696.0" layoutY="412.0" text="Honorários" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </ScrollPane>
+                                       </content>
+                                    </Tab>
+                                    <Tab text="Comarca">
+                                       <content>
+                                          <ScrollPane prefHeight="540.0" prefWidth="890.0">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="1110.0">
+                                                   <children>
+                                                      <Label layoutX="48.0" layoutY="62.0" text="Comarca:" />
+                                                      <TextField layoutX="120.0" layoutY="57.0" prefHeight="31.0" prefWidth="661.0" />
+                                                      <ListView layoutX="120.0" layoutY="103.0" prefHeight="200.0" prefWidth="661.0" />
+                                                      <Button layoutX="795.0" layoutY="57.0" mnemonicParsing="false" text="Busca" />
+                                                      <Label layoutX="120.0" layoutY="315.0" text="Nome" />
+                                                      <Label layoutX="120.0" layoutY="344.0" text="Numero" />
+                                                      <Label layoutX="118.0" layoutY="377.0" text="Comarca" />
+                                                      <Label layoutX="411.0" layoutY="377.0" text="Vara" />
+                                                      <Label layoutX="118.0" layoutY="412.0" text="Tema" />
+                                                      <Label layoutX="409.0" layoutY="412.0" text="Valor" />
+                                                      <Label layoutX="696.0" layoutY="412.0" text="Honorários" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </ScrollPane>
+                                       </content>
+                                    </Tab>
+                                    <Tab text="Vara">
+                                       <content>
+                                          <ScrollPane prefHeight="540.0" prefWidth="890.0">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="1113.0">
+                                                   <children>
+                                                      <Label layoutX="66.0" layoutY="62.0" text="Vara:" />
+                                                      <TextField layoutX="120.0" layoutY="57.0" prefHeight="31.0" prefWidth="661.0" />
+                                                      <ListView layoutX="120.0" layoutY="103.0" prefHeight="200.0" prefWidth="661.0" />
+                                                      <Button layoutX="795.0" layoutY="57.0" mnemonicParsing="false" text="Busca" />
+                                                      <Label layoutX="120.0" layoutY="315.0" text="Nome" />
+                                                      <Label layoutX="120.0" layoutY="344.0" text="Numero" />
+                                                      <Label layoutX="118.0" layoutY="377.0" text="Comarca" />
+                                                      <Label layoutX="411.0" layoutY="377.0" text="Vara" />
+                                                      <Label layoutX="118.0" layoutY="412.0" text="Tema" />
+                                                      <Label layoutX="409.0" layoutY="412.0" text="Valor" />
+                                                      <Label layoutX="696.0" layoutY="412.0" text="Honorários" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </ScrollPane>
+                                       </content>
+                                    </Tab>
+                                    <Tab text="Tema">
+                                       <content>
+                                          <ScrollPane prefHeight="540.0" prefWidth="890.0">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="1113.0">
+                                                   <children>
+                                                      <Label layoutX="66.0" layoutY="62.0" text="Tema:" />
+                                                      <TextField layoutX="120.0" layoutY="57.0" prefHeight="31.0" prefWidth="661.0" />
+                                                      <ListView layoutX="120.0" layoutY="103.0" prefHeight="200.0" prefWidth="661.0" />
+                                                      <Button layoutX="795.0" layoutY="57.0" mnemonicParsing="false" text="Busca" />
+                                                      <Label layoutX="120.0" layoutY="315.0" text="Nome" />
+                                                      <Label layoutX="120.0" layoutY="344.0" text="Numero" />
+                                                      <Label layoutX="118.0" layoutY="377.0" text="Comarca" />
+                                                      <Label layoutX="411.0" layoutY="377.0" text="Vara" />
+                                                      <Label layoutX="118.0" layoutY="412.0" text="Tema" />
+                                                      <Label layoutX="409.0" layoutY="412.0" text="Valor" />
+                                                      <Label layoutX="696.0" layoutY="412.0" text="Honorários" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </ScrollPane>
+                                       </content>
+                                    </Tab>
+                                </tabs>
+                              </TabPane>
+                              <Button fx:id="btnVoltar34" layoutX="1148.0" layoutY="23.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="71.0" />
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Estatísticas">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

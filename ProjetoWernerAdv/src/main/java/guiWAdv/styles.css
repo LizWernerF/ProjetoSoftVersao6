@@ -1,0 +1,67 @@
+/* Defina as configurações gerais para todo o aplicativo */
+.root {
+    -fx-font: "Lexend Deca"; /* Defina a fonte como Lexend Deca */
+    -fx-font-size: 14;
+    -fx-background: lightgrey; /* Fundo */
+    -fx-control-inner-background: rgba(0,0,0,0);
+    -fx-text-fill: black;
+   
+}
+
+
+/* Estilo para botões */
+.button {
+    -fx-background-color: transparent; /* Fundo transparente */
+    -fx-border-color: transparent; /* Borda transparente */
+    -fx-border-radius: 30; /* Borda arredondada */
+    -fx-background-radius: 30; /* Borda arredondada */
+   
+    -fx-border-width: 2px; /* Espessura da borda */
+    -fx-font-weight: bold; /* Texto em negrito */
+}
+
+.button:hover {
+    -fx-border-color: rgba(0,0,0,0.2); /* Borda com brilho ao passar o mouse */
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 255, 255, 0.4), 10, 0, 0, 0); /* Efeito de brilho */
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(to bottom, rgba(224, 224, 224, 0.7), rgba(176, 176, 176, 0.7)); /* Efeito de clique com gradiente */
+}
+
+/* Estilo para ComboBox */
+.combo-box {
+    -fx-background-color: transparent; /* Fundo transparente */
+    -fx-border-radius: 30; /* Borda arredondada */
+    -fx-text-fill: black;
+    
+}
+
+/* Estilo para ListView */
+.list-view {
+    -fx-background-color: grey; /* Fundo transparente */
+    -fx-border-radius: 40; /* Borda arredondada */
+    -fx-text-fill: black;
+   
+}
+
+/* Estilo para TextArea */
+.text-area {
+    -fx-background-color: transparent; /* Fundo transparente */
+    -fx-border-radius: 30; /* Borda arredondada */
+    -fx-text-fill: black;
+    
+}
+.text-field 
+{
+	-fx-background-color: transparent; /* Fundo transparente */
+    -fx-border-radius: 30; /* Borda arredondada */
+    -fx-text-fill: black;
+   
+} 
+
+/* Altera a cor do prompt text para preto */
+.text-field .prompt-text {
+    -fx-text-fill: black;
+    -fx-font-weight: bold; /* Texto em negrito */
+}

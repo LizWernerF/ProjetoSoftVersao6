@@ -1,0 +1,30 @@
+/* Estilo da TabPane */
+.tab-pane {
+    -fx-background-color: white; /* Fundo branco */
+    
+    -fx-background-radius: 5; /* Botões arredondados */
+    -fx-border-color: transparent; /* Borda preta */
+    -fx-border-width: 1px;
+    -fx-border-radius: 5; /* Borda arredondada */
+    -fx-text-fill: black; /* Letras pretas */
+}
+
+/* Estilo das Tabs */
+.tab {
+    -fx-background-color: white; /* Fundo branco */
+    -fx-text-fill: black; /* Letras pretas */
+    -fx-background-radius: 5; /* Botões arredondados */
+    -fx-border-color: transparent; /* Borda preta */
+    -fx-border-width: 1px;
+    -fx-border-radius: 3; /* Borda arredondada */
+}
+.tab-header-area {
+    -fx-background-color: transparent; /* Define a cor de fundo da área das Tabs como transparente */
+}
+.tab-pane {
+    -fx-tab-min-width: 320px; /* Largura mínima das Tabs */
+}
+.text-fiel {
+	-fx-text-fill: black; /* Letras pretas */
+	
+}

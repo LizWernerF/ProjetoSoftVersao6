@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="601.0" prefWidth="643.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiWAdv.Tela05CalculosController">
+   <children>
+      <TabPane layoutY="6.0" prefHeight="709.0" prefWidth="1187.0" stylesheets="@styles.css" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Nova Escola">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="837.0" fitWidth="1187.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../guiWAdvImagens/20%20-%20calc.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txtTemaCalculoNE" layoutX="170.0" layoutY="111.0" text="Nova Escola" />
+                        <TextField fx:id="txtNomeBuscaNE" layoutX="170.0" layoutY="149.0" prefHeight="25.0" prefWidth="549.0" promptText="Nome do Cliente para busca" styleClass="text-field" />
+                        <Button fx:id="btnBuscaNomeNE" layoutX="729.0" layoutY="136.0" mnemonicParsing="false" onAction="#buscarNomesClientesNE" prefHeight="50.0" prefWidth="50.0" />
+                        <ListView fx:id="listClientesBuscaNE" layoutX="170.0" layoutY="181.0" prefHeight="106.0" prefWidth="552.0" />
+                        <TextField fx:id="txtRetornoNomeNE" layoutX="170.0" layoutY="298.0" prefHeight="25.0" prefWidth="552.0" promptText="Nome do Cliente para o Cálculo" />
+                        <ListView fx:id="listMatriculasNE" layoutX="170.0" layoutY="333.0" prefHeight="54.0" prefWidth="360.0" />
+                        <TextField fx:id="txtRetornoMatriculaNE" layoutX="541.0" layoutY="333.0" prefHeight="25.0" prefWidth="180.0" promptText="Matrícula do cliente" />
+                        <TextField fx:id="txtEscolaBuscaNE" layoutX="858.0" layoutY="149.0" prefHeight="25.0" prefWidth="211.0" promptText="Busca Escola" />
+                        <Button fx:id="btnBuscaEscolaDB" layoutX="1080.0" layoutY="137.0" mnemonicParsing="false" onAction="#buscarEscolasNE" prefHeight="50.0" prefWidth="50.0" />
+                        <ListView fx:id="listEscolaBuscaNE" layoutX="858.0" layoutY="181.0" prefHeight="105.0" prefWidth="211.0" />
+                        <TextField fx:id="txtRetornoEscolaNE" layoutX="858.0" layoutY="298.0" prefHeight="25.0" prefWidth="213.0" promptText="Nome da Escola" />
+                        <TextField fx:id="txtRetornoNotaNE" layoutX="858.0" layoutY="345.0" prefHeight="25.0" prefWidth="214.0" promptText="Nota da Escola" />
+                        <Button fx:id="btnCadastraEscola" layoutX="899.0" layoutY="382.0" mnemonicParsing="false" onAction="#inserirEscolaNE" prefHeight="30.0" prefWidth="30.0" />
+                        <Button fx:id="btnUsaEscola" layoutX="991.0" layoutY="382.0" mnemonicParsing="false" onAction="#btnUsaEscolaAction" prefHeight="30.0" prefWidth="30.0" />
+                        <TextField fx:id="txtNomeEscola" layoutX="170.0" layoutY="397.0" prefHeight="25.0" prefWidth="202.0" promptText="Nome da Escola" />
+                        <TextField fx:id="txtNotaEscola" layoutX="383.0" layoutY="397.0" promptText="Nota da Escola" />
+                        <TextField fx:id="txtDataFinalSelic" layoutX="170.0" layoutY="440.0" promptText="Data atual - Selic" />
+                        <TextField fx:id="txtValorFinalSelic" layoutX="326.0" layoutY="440.0" promptText="Valor da SELIC" />
+                        <Button fx:id="btnCalculaSelic" layoutX="502.0" layoutY="438.0" mnemonicParsing="false" onAction="#calcularSelic" prefHeight="30.0" prefWidth="30.0" />
+                        <TextField fx:id="txtDataDoCalculoNE" layoutX="170.0" layoutY="475.0" promptText="Data do cálculo" />
+                        <TextField fx:id="txtJurosNEAtualizados" layoutX="326.0" layoutY="475.0" promptText="Indice de Juros " />
+                        <Button fx:id="btnCalculaJurosNE" layoutX="502.0" layoutY="476.0" mnemonicParsing="false" onAction="#calcularJurosNE" prefHeight="30.0" prefWidth="30.0" />
+                        <TextField fx:id="txtPrincipalLiquidoNE" layoutX="170.0" layoutY="516.0" promptText="Principal Líquido" />
+                        <TextField fx:id="txtDescontoPrevidenciaNE" layoutX="170.0" layoutY="556.0" promptText="RioPrev" />
+                        <TextField fx:id="txtTotalCalculoNE" layoutX="170.0" layoutY="599.0" promptText="Total" />
+                        <Button fx:id="btnGerarCalculoNE" layoutX="373.0" layoutY="552.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                        <Button fx:id="btnCadastrarCalcNE" layoutX="484.0" layoutY="554.0" mnemonicParsing="false" onAction="#inserirCalculoNEdataBase" prefHeight="30.0" prefWidth="30.0" />
+                        <Button fx:id="btnCadastrarProfEscNE" layoutX="753.0" layoutY="249.0" mnemonicParsing="false" onAction="#inserirProfessorescola" prefHeight="53.0" prefWidth="56.0" />
+                        <Label fx:id="labelIDEscola" layoutX="1091.0" layoutY="302.0" />
+                        <Button fx:id="btnLimparTelaCalculoNE" layoutX="1088.0" layoutY="21.0" mnemonicParsing="false" onAction="#limparTelaCalculoNE" text="Limpar tela" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Interníveis">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="837.0" fitWidth="1187.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../guiWAdvImagens/20%20-%20int.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txtTemaCalculoInterniveis" layoutX="170.0" layoutY="111.0" text="Interníveis" />
+                        <TextField fx:id="txtNomeBuscaInterniveis" layoutX="170.0" layoutY="149.0" prefHeight="25.0" prefWidth="549.0" promptText="Nome do Cliente para busca" styleClass="text-field" />
+                        <Button fx:id="btnBuscaNomeInterniveis" layoutX="729.0" layoutY="136.0" mnemonicParsing="false" onAction="#buscarNomesClientesInterniveis" prefHeight="50.0" prefWidth="50.0" />
+                        <ListView fx:id="listClientesBuscaInterniveis" layoutX="170.0" layoutY="181.0" prefHeight="106.0" prefWidth="552.0" />
+                        <TextField fx:id="txtRetornoNomeInterniveis" layoutX="170.0" layoutY="298.0" prefHeight="25.0" prefWidth="552.0" promptText="Nome do Cliente para o Cálculo" />
+                        <ListView fx:id="listMatriculasInterniveis" layoutX="170.0" layoutY="333.0" prefHeight="54.0" prefWidth="360.0" />
+                        <TextField fx:id="txtRetornoMatriculaInterniveis" layoutX="541.0" layoutY="333.0" prefHeight="25.0" prefWidth="180.0" promptText="Matrícula do cliente" />
+                        <TextField fx:id="txtDataFinalSelic1" layoutX="170.0" layoutY="440.0" promptText="Data atual - Selic" />
+                        <TextField fx:id="txtValorFinalSelic1" layoutX="326.0" layoutY="440.0" promptText="Valor da SELIC" />
+                        <Button fx:id="btnCalculaSelic1" layoutX="502.0" layoutY="438.0" mnemonicParsing="false" onAction="#calcularSelic" prefHeight="30.0" prefWidth="30.0" />
+                        <TextField fx:id="txtDataDoCalculoNE1" layoutX="170.0" layoutY="475.0" promptText="Data do cálculo" />
+                        <TextField fx:id="txtJurosNEAtualizados1" layoutX="326.0" layoutY="475.0" promptText="Indice de Juros " />
+                        <Button fx:id="btnCalculaJurosNE1" layoutX="502.0" layoutY="476.0" mnemonicParsing="false" onAction="#calcularJurosNE" prefHeight="30.0" prefWidth="30.0" />
+                        <TextField layoutX="170.0" layoutY="516.0" promptText="Principal Líquido" />
+                        <TextField layoutX="170.0" layoutY="556.0" promptText="RioPrev" />
+                        <TextField layoutX="170.0" layoutY="599.0" promptText="Total" />
+                        <Button fx:id="btnGerarCalculoNE1" layoutX="373.0" layoutY="552.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                        <Button layoutX="484.0" layoutY="554.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+                        <TextField fx:id="txtRefProfessor" layoutX="803.0" layoutY="137.0" text="Referencia" />
+                        <TextField fx:id="txtDataInicioProfessor" layoutX="803.0" layoutY="174.0" text="Data Inicio" />
+                        <TextArea fx:id="txaDataseNiveisCal" layoutX="803.0" layoutY="202.0" prefHeight="72.0" prefWidth="317.0" />
+                        <Button fx:id="btnCalcDatasNiveis" layoutX="952.0" layoutY="150.0" mnemonicParsing="false" text="Calcula" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Piso">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="837.0" fitWidth="1187.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../guiWAdvImagens/21%20-%20piso.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txtTemaCalculoNE11" layoutX="170.0" layoutY="111.0" text="Piso" />
+                        <TextField fx:id="txtNomeBuscaNE11" layoutX="170.0" layoutY="149.0" prefHeight="25.0" prefWidth="549.0" promptText="Nome do Cliente para busca" styleClass="text-field" />
+                        <Button fx:id="btnBuscaNomeNE11" layoutX="729.0" layoutY="136.0" mnemonicParsing="false" onAction="#buscarNomesClientesNE" prefHeight="50.0" prefWidth="50.0" />
+                        <ListView fx:id="listClientesBuscaNE11" layoutX="170.0" layoutY="181.0" prefHeight="106.0" prefWidth="552.0" />
+                        <TextField fx:id="txtRetornoNomeNE11" layoutX="170.0" layoutY="298.0" prefHeight="25.0" prefWidth="552.0" promptText="Nome do Cliente para o Cálculo" />
+                        <ListView fx:id="listMatriculasNE11" layoutX="170.0" layoutY="333.0" prefHeight="54.0" prefWidth="360.0" />
+                        <TextField fx:id="txtRetornoMatriculaNE11" layoutX="541.0" layoutY="333.0" prefHeight="25.0" prefWidth="180.0" promptText="Matrícula do cliente" />
+                        <TextField fx:id="txtDataFinalSelic11" layoutX="170.0" layoutY="440.0" promptText="Data atual - Selic" />
+                        <TextField fx:id="txtValorFinalSelic11" layoutX="326.0" layoutY="440.0" promptText="Valor da SELIC" />
+                        <Button fx:id="btnCalculaSelic11" layoutX="502.0" layoutY="438.0" mnemonicParsing="false" onAction="#calcularSelic" prefHeight="30.0" prefWidth="30.0" />
+                        <TextField fx:id="txtDataDoCalculoNE11" layoutX="170.0" layoutY="475.0" promptText="Data do cálculo" />
+                        <TextField fx:id="txtJurosNEAtualizados11" layoutX="326.0" layoutY="475.0" promptText="Indice de Juros " />
+                        <Button fx:id="btnCalculaJurosNE11" layoutX="502.0" layoutY="476.0" mnemonicParsing="false" onAction="#calcularJurosNE" prefHeight="30.0" prefWidth="30.0" />
+                        <TextField fx:id="txtPrincipalLiquidoNE11" layoutX="170.0" layoutY="516.0" promptText="Principal Líquido" />
+                        <TextField fx:id="txtDescontoPrevidenciaNE11" layoutX="170.0" layoutY="556.0" promptText="RioPrev" />
+                        <TextField fx:id="txtTotalCalculoNE11" layoutX="170.0" layoutY="599.0" promptText="Total" />
+                        <Button fx:id="btnGerarCalculoNE11" layoutX="373.0" layoutY="552.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                        <Button layoutX="484.0" layoutY="554.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
