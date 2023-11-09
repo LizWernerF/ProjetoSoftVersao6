@@ -570,12 +570,11 @@ public class Tela04GeradorDeDocumentoController {
 	
 	//PISO
 	List<String> nomesPetPiso = Arrays.asList(
-	        "Réplica_Piso",
-	        "teste",
-	        "teste2",
-	        "tste3",
-	        "",
-	        ""
+	        "Replica_Piso",
+	        "Provas_Piso",
+	        "Alegacoes_Finais_Piso",
+	        "CR_Apelacao_Piso",
+	        "EDs_Sobre_Suspensao_Piso"
 	        
 		);
 choiceBoxPetPiso.getItems().addAll(nomesPetPiso);
@@ -1713,64 +1712,19 @@ choiceBoxPetPiso.getItems().addAll(nomesPetPiso);
 	private Map<String, String> nomesPetPiso = new HashMap<>();
 	@FXML
 	private void gerarPetPisoSelecionada() {
+		System.out.println("Ação chamada");
 		
 		String nome = txtNomePetInter.getText();
 		String numeroprocesso = txtNumeroProcInter.getText();
 		String cargoAutor = txtCargoPetInter.getText();
 		String cargahorariaAutor = txtCargaHPetInter.getText();
-		
 		String referencia = txtRefPetInter.getText();
-		String valorBrutoTexto = txtValorPrincipal.getText();
-		double valorBrutoDouble = 0.0; // Inicializa com zero, caso ocorra um erro na conversão
-		try {
-		    // Remove o "R$" e substitui a vírgula por ponto
-		    String valorNumerico = valorBrutoTexto
-		        .replace("R$", "") // Remove "R$"
-		        .replace(".", "")   // Remove os pontos de milhar, se houver
-		        .replace(",", "."); // Substitui a vírgula por ponto
-		    valorBrutoDouble = Double.parseDouble(valorNumerico);
-		} catch (NumberFormatException e) {
-		    // Lida com um valor inválido
-		    exibirAlerta("Erro", "Valor bruto inválido: " + valorBrutoTexto);
-		    return; // Saia do método se houver um erro
-		}
-
-		double valorSucumbencia = 0.10 * valorBrutoDouble; // 10% do valor bruto
+		String comarca = txtComarcaProcesso.getText();
+		String vara = txtVaraProcesso.getText();
 		
-		DecimalFormat df = new DecimalFormat("#0.00");
-		// Formate o valor da sucumbência com duas casas decimais
-		String valorSucumbenciaFormatado = "R$ " + df.format(valorSucumbencia);
-
-		String rioPrev = txtRioPrev.getText();
-		String valorFinal = txtValorFinal.getText();
-		
-		
-	
-	
 		int nivelInicial = Integer.parseInt(txtNivelPetInter.getText());
-		int nivel2 = (int)(nivelInicial + 1);
-		int nivel3 = (int)(nivel2 + 1);
-		int nivel4 = (int)(nivel3 + 1);
-		int nivel5 = (int)(nivel4 + 1);
-		String daatadeinicio = labelDataInicio.getText();
 		
-		LocalDate daatainicio = LocalDate.parse(daatadeinicio, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-		
-					// Calcula a data 5 anos depois da data inicial
-		LocalDate data5AnosDepois = daatainicio.plusYears(5);
-		// Calcula a data 10 anos depois da data inicial
-		LocalDate data10AnosDepois = daatainicio.plusYears(10);
-		// Calcula a data 15 anos depois da data inicial
-		LocalDate data15AnosDepois = daatainicio.plusYears(15);
-		
-		 DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		    String daatadeinicioFormatada = daatainicio.format(dateFormatter);
-		    String data5AnosDepoisFormatada = data5AnosDepois.format(dateFormatter);
-		    String data10AnosDepoisFormatada = data10AnosDepois.format(dateFormatter);
-		    String data15AnosDepoisFormatada = data15AnosDepois.format(dateFormatter);
-		
-		
-		String nomePeticaoPiso = choiceBoxPetInter.getValue();
+		String nomePeticaoPiso = choiceBoxPetPiso.getValue();
 		
 		if (nomePeticaoPiso != null) {
 			String templatePath = "C:\\Users\\lizwf\\OneDrive\\Área de Trabalho\\Curso de Java\\ProjetoWernerAdv\\src\\main\\java\\guiWAdv\\PetPiso\\" + nomePeticaoPiso +".docx";
@@ -1779,18 +1733,9 @@ choiceBoxPetPiso.getItems().addAll(nomesPetPiso);
 			dataMap.put("[PROCESSO]", numeroprocesso);
 			dataMap.put("REFAUTOR", referencia);
 			dataMap.put("NIVELAUTOR", String.valueOf(nivelInicial));
-			dataMap.put("nimais5", String.valueOf(nivel2));
-			dataMap.put("nimais10", String.valueOf(nivel3));
-			dataMap.put("nimais15", String.valueOf(nivel4));
-			dataMap.put("nimais20", String.valueOf(nivel5));
-			dataMap.put("DATAINICIO", String.valueOf(daatadeinicioFormatada));
-			dataMap.put("data5AnosDepois", String.valueOf(data5AnosDepoisFormatada));
-			dataMap.put("data10AnosDepois", String.valueOf(data10AnosDepoisFormatada));
-			dataMap.put("data15AnosDepois", String.valueOf(data15AnosDepoisFormatada));
-			dataMap.put("SUCUMBENCIA", String.valueOf(valorSucumbenciaFormatado));
-			dataMap.put("VALORBRUTO", String.valueOf(valorBrutoTexto));
-			dataMap.put("VALORRIOPREV", String.valueOf(rioPrev));
-			dataMap.put("VALORFINAL", String.valueOf(valorFinal));
+			dataMap.put("xxxxxxx", comarca);
+			dataMap.put("[VARA]", vara);
+	
 			dataMap.put("#CH", cargahorariaAutor);
 			dataMap.put("CARGOAUTOR", cargoAutor);
 			
@@ -1798,9 +1743,10 @@ choiceBoxPetPiso.getItems().addAll(nomesPetPiso);
 
 			
 			preencherPetPiso(templatePath, dataMap, nomePeticaoPiso);
-			
+			System.out.println("Chamada ação preencherPetPiso");
 	    }		
 	}
+	
 	private void preencherPetPiso(String nomePeticaoPiso, Map<String, String> dataMap, String nomeArquivoPiso) {
 	    try {
 	        XWPFDocument doc = new XWPFDocument(new FileInputStream(nomePeticaoPiso));
@@ -1818,6 +1764,7 @@ choiceBoxPetPiso.getItems().addAll(nomesPetPiso);
 	        }
 
 	        salvarPetPisoGerado(doc, nomeArquivoPiso);
+	        System.out.println("chamada ação para salvar");
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
@@ -1834,6 +1781,22 @@ choiceBoxPetPiso.getItems().addAll(nomesPetPiso);
 	        e.printStackTrace();
 	        exibirAviso("Erro", "Ocorreu um erro ao gerar a petição.");
 	    }
+	}
+
+	public Map<String, String> getNomesPetInterNE() {
+		return nomesPetInterNE;
+	}
+
+	public void setNomesPetInterNE(Map<String, String> nomesPetInterNE) {
+		this.nomesPetInterNE = nomesPetInterNE;
+	}
+
+	public Map<String, String> getNomesPetPiso() {
+		return nomesPetPiso;
+	}
+
+	public void setNomesPetPiso(Map<String, String> nomesPetPiso) {
+		this.nomesPetPiso = nomesPetPiso;
 	}
 	
 	

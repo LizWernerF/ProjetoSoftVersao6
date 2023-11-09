@@ -75,19 +75,21 @@
                         <TextField fx:id="txtRetornoMatriculaInterniveis" layoutX="541.0" layoutY="333.0" prefHeight="25.0" prefWidth="180.0" promptText="Matrícula do cliente" />
                         <TextField fx:id="txtDataFinalSelic1" layoutX="170.0" layoutY="440.0" promptText="Data atual - Selic" />
                         <TextField fx:id="txtValorFinalSelic1" layoutX="326.0" layoutY="440.0" promptText="Valor da SELIC" />
-                        <Button fx:id="btnCalculaSelic1" layoutX="502.0" layoutY="438.0" mnemonicParsing="false" onAction="#calcularSelic" prefHeight="30.0" prefWidth="30.0" />
-                        <TextField fx:id="txtDataDoCalculoNE1" layoutX="170.0" layoutY="475.0" promptText="Data do cálculo" />
+                        <Button fx:id="btnCalculaSelicInterniveis" layoutX="502.0" layoutY="438.0" mnemonicParsing="false" onAction="#calcularSelicInterniveis" prefHeight="30.0" prefWidth="30.0" />
+                        <TextField fx:id="txtDataDoCalculoInter" layoutX="170.0" layoutY="475.0" promptText="Data do cálculo" />
                         <TextField fx:id="txtJurosNEAtualizados1" layoutX="326.0" layoutY="475.0" promptText="Indice de Juros " />
-                        <Button fx:id="btnCalculaJurosNE1" layoutX="502.0" layoutY="476.0" mnemonicParsing="false" onAction="#calcularJurosNE" prefHeight="30.0" prefWidth="30.0" />
-                        <TextField layoutX="170.0" layoutY="516.0" promptText="Principal Líquido" />
-                        <TextField layoutX="170.0" layoutY="556.0" promptText="RioPrev" />
-                        <TextField layoutX="170.0" layoutY="599.0" promptText="Total" />
-                        <Button fx:id="btnGerarCalculoNE1" layoutX="373.0" layoutY="552.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
-                        <Button layoutX="484.0" layoutY="554.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+                        <Button fx:id="btnCalculaJurosInterniveis" layoutX="502.0" layoutY="476.0" mnemonicParsing="false" onAction="#calcularJurosInterniveis" prefHeight="30.0" prefWidth="30.0" />
+                        <TextField fx:id="txtPrincipalInterniveis" layoutX="170.0" layoutY="516.0" promptText="Principal Líquido" />
+                        <TextField fx:id="txtRioPrevInterniveis" layoutX="170.0" layoutY="556.0" promptText="RioPrev" />
+                        <TextField fx:id="txtValorFinalInterniveis" layoutX="170.0" layoutY="599.0" promptText="Total" />
+                        <Button fx:id="btnGeraPLanilhaInterniveis" layoutX="373.0" layoutY="552.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                        <Button fx:id="btnCadastraCalculoInterniveis" layoutX="484.0" layoutY="554.0" mnemonicParsing="false" onAction="#inserirCalculoInterniveisdataBase" prefHeight="30.0" prefWidth="30.0" />
                         <TextField fx:id="txtRefProfessor" layoutX="803.0" layoutY="137.0" text="Referencia" />
                         <TextField fx:id="txtDataInicioProfessor" layoutX="803.0" layoutY="174.0" text="Data Inicio" />
                         <TextArea fx:id="txaDataseNiveisCal" layoutX="803.0" layoutY="202.0" prefHeight="72.0" prefWidth="317.0" />
-                        <Button fx:id="btnCalcDatasNiveis" layoutX="952.0" layoutY="150.0" mnemonicParsing="false" text="Calcula" />
+                        <Button fx:id="btnCalcDatasNiveis" layoutX="952.0" layoutY="150.0" mnemonicParsing="false" onAction="#calcularNiveisInterniveis" text="Calcula" />
+                        <TextField fx:id="txtDataNivelInicio" layoutX="803.0" layoutY="298.0" promptText="Data da Troca" />
+                        <TextField fx:id="txtNivelInicio" layoutX="1003.0" layoutY="298.0" prefHeight="25.0" prefWidth="127.0" promptText="Nivel antes da troca" />
                      </children>
                   </AnchorPane>
                </content>
