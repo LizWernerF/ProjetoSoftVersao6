@@ -12,8 +12,6 @@ import java.util.logging.Logger;
 
 import com.WernerADV.Software.DataBase;
 
-import guiWAdv.HistoricoDao;
-
 public class escolaNEDao {
 	
 	

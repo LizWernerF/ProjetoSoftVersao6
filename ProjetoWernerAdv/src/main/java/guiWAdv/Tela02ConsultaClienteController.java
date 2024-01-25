@@ -594,12 +594,6 @@ public class Tela02ConsultaClienteController {
 		        alert.setHeaderText(title);
 		        alert.setContentText(message);
 
-		        // Carregue o ícone da imagem
-		        Image icon = new Image(getClass().getResourceAsStream("/guiWAdv/LOGO.png"));
-		        ImageView imageView = new ImageView(icon);
-
-		        // Configure o ícone do Alert
-		        alert.setGraphic(imageView);
 
 		        alert.showAndWait();
 		    });

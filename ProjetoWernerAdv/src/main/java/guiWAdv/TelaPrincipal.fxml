@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
@@ -288,24 +289,39 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="709.0" fitWidth="1324.0" layoutX="-2.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="709.0" fitWidth="1324.0" layoutX="-2.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../guiWAdvImagens/8.png" />
                                  </image>
                               </ImageView>
-                              <TabPane layoutX="72.0" layoutY="151.0" prefHeight="542.0" prefWidth="1111.0" stylesheets="@styles.css" tabClosingPolicy="UNAVAILABLE">
+                              <TabPane layoutX="72.0" layoutY="77.0" prefHeight="616.0" prefWidth="1111.0" stylesheets="@styles.css" tabClosingPolicy="UNAVAILABLE">
                                 <tabs>
                                   <Tab text="Nome">
                                     <content>
                                           <ScrollPane prefHeight="506.0" prefWidth="890.0">
                                              <content>
-                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="1109.0">
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="581.0" prefWidth="1109.0">
                                                    <children>
-                                                      <Label layoutX="66.0" layoutY="19.0" text="Nome:" />
-                                                      <TextField fx:id="txtBuscaPorNomeTabBuscaProcNome" layoutX="120.0" layoutY="14.0" prefHeight="31.0" prefWidth="661.0" stylesheets="@styles.css" />
-                                                      <ListView fx:id="listResultadosNumerosTabBuscaProcNome" layoutX="120.0" layoutY="60.0" prefHeight="200.0" prefWidth="868.0" stylesheets="@styles.css" />
-                                                      <TextArea layoutX="120.0" layoutY="268.0" prefHeight="200.0" prefWidth="846.0" />
-                                                      <Button fx:id="btnBuscarTabBuscaProcNome" layoutX="820.0" layoutY="22.0" mnemonicParsing="false" text="Button" />
+                                                      <ImageView fitHeight="688.0" fitWidth="1115.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../guiWAdvImagens/ConsultaporNome.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label layoutX="63.0" layoutY="19.0" text="Nome:" />
+                                                      <TextField fx:id="txtBuscaNome" layoutX="111.0" layoutY="14.0" prefHeight="31.0" prefWidth="661.0" stylesheets="@styles.css" />
+                                                      <ListView fx:id="listNomes" layoutX="66.0" layoutY="60.0" prefHeight="200.0" prefWidth="519.0" stylesheets="@styles.css" />
+                                                      <Button fx:id="btnBuscaNome" layoutX="789.0" layoutY="6.0" mnemonicParsing="false" onAction="#buscarporNome" prefHeight="46.0" prefWidth="61.0" />
+                                                      <ListView fx:id="listProcNomes" layoutX="608.0" layoutY="60.0" prefHeight="200.0" prefWidth="444.0" stylesheets="@styles.css" />
+                                                      <TextField fx:id="txtNomeSelecionado" layoutX="66.0" layoutY="268.0" prefHeight="30.0" prefWidth="520.0" promptText="Nome" />
+                                                      <TextField fx:id="txtProcSelecionado" layoutX="608.0" layoutY="266.0" prefHeight="30.0" prefWidth="447.0" promptText="Processo" />
+                                                      <Label fx:id="labelComarca" layoutX="66.0" layoutY="305.0" prefHeight="20.0" prefWidth="290.0" />
+                                                      <Label fx:id="labelVara" layoutX="376.0" layoutY="306.0" prefHeight="20.0" prefWidth="217.0" />
+                                                      <TextArea fx:id="taAndamentos" layoutX="39.0" layoutY="338.0" prefHeight="230.0" prefWidth="635.0" />
+                                                      <Label fx:id="labelTema" layoutX="615.0" layoutY="305.0" prefHeight="20.0" prefWidth="164.0" />
+                                                      <TextField fx:id="txtDataNovoAndamento" layoutX="781.0" layoutY="393.0" prefHeight="30.0" prefWidth="124.0" />
+                                                      <TextField fx:id="txtNovoAndamento" layoutX="706.0" layoutY="436.0" prefHeight="30.0" prefWidth="276.0" />
+                                                      <Button fx:id="btnNovoAndamento" layoutX="825.0" layoutY="477.0" mnemonicParsing="false" onAction="#inserirMovimento" prefHeight="42.0" prefWidth="36.0" />
+                                                      <TextField fx:id="txtStatusNome" layoutX="839.0" layoutY="304.0" prefHeight="25.0" prefWidth="217.0" />
                                                    </children>
                                                 </AnchorPane>
                                              </content>
@@ -314,21 +330,29 @@
                                   </Tab>
                                     <Tab text="Numero">
                                        <content>
-                                          <ScrollPane prefHeight="540.0" prefWidth="890.0">
+                                          <ScrollPane prefHeight="506.0" prefWidth="890.0">
                                              <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="1114.0">
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="1109.0">
                                                    <children>
-                                                      <Label layoutX="60.0" layoutY="62.0" text="Numero:" />
-                                                      <TextField layoutX="120.0" layoutY="57.0" prefHeight="31.0" prefWidth="661.0" />
-                                                      <ListView layoutX="120.0" layoutY="103.0" prefHeight="200.0" prefWidth="661.0" />
-                                                      <Button layoutX="795.0" layoutY="57.0" mnemonicParsing="false" text="Busca" />
-                                                      <Label layoutX="120.0" layoutY="315.0" text="Nome" />
-                                                      <Label layoutX="120.0" layoutY="344.0" text="Numero" />
-                                                      <Label layoutX="118.0" layoutY="377.0" text="Comarca" />
-                                                      <Label layoutX="411.0" layoutY="377.0" text="Vara" />
-                                                      <Label layoutX="118.0" layoutY="412.0" text="Tema" />
-                                                      <Label layoutX="409.0" layoutY="412.0" text="Valor" />
-                                                      <Label layoutX="696.0" layoutY="412.0" text="Honorários" />
+                                                      <ImageView fitHeight="585.0" fitWidth="1112.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../guiWAdvImagens/ConsultaporNumero.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label layoutX="66.0" layoutY="19.0" text="Numero:" />
+                                                      <TextField fx:id="txtBuscaProc" layoutX="138.0" layoutY="14.0" prefHeight="31.0" prefWidth="643.0" stylesheets="@styles.css" />
+                                                      <Button fx:id="btnBuscaProc" layoutX="810.0" layoutY="12.0" mnemonicParsing="false" onAction="#buscarPorNumero" prefHeight="40.0" prefWidth="44.0" />
+                                                      <ListView fx:id="listProcs" layoutX="138.0" layoutY="64.0" prefHeight="188.0" prefWidth="719.0" stylesheets="@styles.css" />
+                                                      <TextField fx:id="txtNomeSelecionado1" layoutX="79.0" layoutY="276.0" prefHeight="30.0" prefWidth="520.0" promptText="Nome" />
+                                                      <TextField fx:id="txtProcSelecionado1" layoutX="623.0" layoutY="276.0" prefHeight="30.0" prefWidth="447.0" promptText="Processo" />
+                                                      <Label fx:id="labelComarca1" layoutX="79.0" layoutY="317.0" prefHeight="20.0" prefWidth="284.0" />
+                                                      <Label fx:id="labelVara1" layoutX="389.0" layoutY="317.0" prefHeight="20.0" prefWidth="191.0" />
+                                                      <TextArea fx:id="taAndamentos1" layoutX="17.0" layoutY="359.0" prefHeight="205.0" prefWidth="677.0" />
+                                                      <Label fx:id="labelTema1" layoutX="623.0" layoutY="319.0" prefHeight="20.0" prefWidth="164.0" />
+                                                      <TextField fx:id="txtDataNovoAndamento1" layoutX="781.0" layoutY="394.0" prefHeight="30.0" prefWidth="132.0" />
+                                                      <TextField fx:id="txtNovoAndamento1" layoutX="705.0" layoutY="437.0" prefHeight="30.0" prefWidth="309.0" />
+                                                      <Button fx:id="btnNovoAndamento1" layoutX="832.0" layoutY="474.0" mnemonicParsing="false" onAction="#inserirMovimentoNumero" prefHeight="39.0" prefWidth="38.0" />
+                                                      <TextField fx:id="txtStatusProcesso" layoutX="839.0" layoutY="315.0" prefHeight="25.0" prefWidth="226.0" />
                                                    </children>
                                                 </AnchorPane>
                                              </content>
@@ -337,21 +361,28 @@
                                     </Tab>
                                     <Tab text="Comarca">
                                        <content>
-                                          <ScrollPane prefHeight="540.0" prefWidth="890.0">
+                                          <ScrollPane prefHeight="506.0" prefWidth="890.0">
                                              <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="1110.0">
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="579.0" prefWidth="1109.0">
                                                    <children>
-                                                      <Label layoutX="48.0" layoutY="62.0" text="Comarca:" />
-                                                      <TextField layoutX="120.0" layoutY="57.0" prefHeight="31.0" prefWidth="661.0" />
-                                                      <ListView layoutX="120.0" layoutY="103.0" prefHeight="200.0" prefWidth="661.0" />
-                                                      <Button layoutX="795.0" layoutY="57.0" mnemonicParsing="false" text="Busca" />
-                                                      <Label layoutX="120.0" layoutY="315.0" text="Nome" />
-                                                      <Label layoutX="120.0" layoutY="344.0" text="Numero" />
-                                                      <Label layoutX="118.0" layoutY="377.0" text="Comarca" />
-                                                      <Label layoutX="411.0" layoutY="377.0" text="Vara" />
-                                                      <Label layoutX="118.0" layoutY="412.0" text="Tema" />
-                                                      <Label layoutX="409.0" layoutY="412.0" text="Valor" />
-                                                      <Label layoutX="696.0" layoutY="412.0" text="Honorários" />
+                                                      <ImageView fitHeight="583.0" fitWidth="1111.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../guiWAdvImagens/ConsultaporComarca.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ListView fx:id="listUserComarcas" layoutX="66.0" layoutY="60.0" prefHeight="200.0" prefWidth="519.0" stylesheets="@styles.css" />
+                                                      <ListView fx:id="listProcComarcas" layoutX="608.0" layoutY="60.0" prefHeight="200.0" prefWidth="444.0" stylesheets="@styles.css" />
+                                                      <TextField fx:id="txtNomeSelecionado2" layoutX="79.0" layoutY="276.0" prefHeight="30.0" prefWidth="520.0" promptText="Nome" />
+                                                      <TextField fx:id="txtProcSelecionado2" layoutX="623.0" layoutY="276.0" prefHeight="30.0" prefWidth="447.0" promptText="Processo" />
+                                                      <Label fx:id="labelComarca2" layoutX="79.0" layoutY="317.0" prefHeight="20.0" prefWidth="290.0" />
+                                                      <Label fx:id="labelVara2" layoutX="382.0" layoutY="317.0" prefHeight="20.0" prefWidth="217.0" />
+                                                      <TextArea fx:id="taAndamentos2" layoutX="40.0" layoutY="353.0" prefHeight="220.0" prefWidth="647.0" />
+                                                      <Label fx:id="labelTema2" layoutX="621.0" layoutY="317.0" prefHeight="20.0" prefWidth="164.0" />
+                                                      <ComboBox fx:id="comboBuscaComarca" layoutX="162.0" layoutY="16.0" prefHeight="30.0" prefWidth="494.0" />
+                                                      <TextField fx:id="txtDataNovoAndamento2" layoutX="785.0" layoutY="393.0" prefHeight="30.0" prefWidth="124.0" />
+                                                      <TextField fx:id="txtNovoAndamento2" layoutX="714.0" layoutY="433.0" prefHeight="30.0" prefWidth="264.0" />
+                                                      <Button fx:id="btnNovoAndamento2" layoutX="832.0" layoutY="475.0" mnemonicParsing="false" onAction="#inserirMovimento2" prefWidth="39.0" />
+                                                      <TextField fx:id="txtStatusComarca" layoutX="847.0" layoutY="315.0" prefHeight="25.0" prefWidth="215.0" />
                                                    </children>
                                                 </AnchorPane>
                                              </content>
@@ -360,21 +391,29 @@
                                     </Tab>
                                     <Tab text="Vara">
                                        <content>
-                                          <ScrollPane prefHeight="540.0" prefWidth="890.0">
+                                          <ScrollPane prefHeight="506.0" prefWidth="890.0">
                                              <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="1113.0">
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="581.0" prefWidth="1109.0">
                                                    <children>
-                                                      <Label layoutX="66.0" layoutY="62.0" text="Vara:" />
-                                                      <TextField layoutX="120.0" layoutY="57.0" prefHeight="31.0" prefWidth="661.0" />
-                                                      <ListView layoutX="120.0" layoutY="103.0" prefHeight="200.0" prefWidth="661.0" />
-                                                      <Button layoutX="795.0" layoutY="57.0" mnemonicParsing="false" text="Busca" />
-                                                      <Label layoutX="120.0" layoutY="315.0" text="Nome" />
-                                                      <Label layoutX="120.0" layoutY="344.0" text="Numero" />
-                                                      <Label layoutX="118.0" layoutY="377.0" text="Comarca" />
-                                                      <Label layoutX="411.0" layoutY="377.0" text="Vara" />
-                                                      <Label layoutX="118.0" layoutY="412.0" text="Tema" />
-                                                      <Label layoutX="409.0" layoutY="412.0" text="Valor" />
-                                                      <Label layoutX="696.0" layoutY="412.0" text="Honorários" />
+                                                      <ImageView fitHeight="580.0" fitWidth="1112.0" layoutX="4.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../guiWAdvImagens/ConsultaporVara.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ListView fx:id="listNomesVara" layoutX="66.0" layoutY="60.0" prefHeight="200.0" prefWidth="519.0" stylesheets="@styles.css" />
+                                                      <ListView fx:id="listProcNomesVara" layoutX="608.0" layoutY="60.0" prefHeight="200.0" prefWidth="444.0" stylesheets="@styles.css" />
+                                                      <TextField fx:id="txtNomeSelecionado3" layoutX="66.0" layoutY="276.0" prefHeight="30.0" prefWidth="520.0" promptText="Nome" />
+                                                      <TextField fx:id="txtProcSelecionado3" layoutX="607.0" layoutY="276.0" prefHeight="30.0" prefWidth="447.0" promptText="Processo" />
+                                                      <Label fx:id="labelComarca3" layoutX="70.0" layoutY="314.0" prefHeight="20.0" prefWidth="290.0" />
+                                                      <Label fx:id="labelVara3" layoutX="376.0" layoutY="314.0" prefHeight="20.0" prefWidth="196.0" />
+                                                      <TextArea fx:id="taAndamentos3" layoutX="40.0" layoutY="350.0" prefHeight="219.0" prefWidth="627.0" />
+                                                      <Label fx:id="labelTema3" layoutX="608.0" layoutY="314.0" prefHeight="20.0" prefWidth="199.0" />
+                                                      <ComboBox fx:id="comboBuscaVara" layoutX="416.0" layoutY="14.0" prefHeight="30.0" prefWidth="243.0" />
+                                                      <TextField fx:id="txtDataNovoAndamento3" layoutX="771.0" layoutY="387.0" prefWidth="128.0" />
+                                                      <TextField fx:id="txtNovoAndamento3" layoutX="700.0" layoutY="429.0" prefHeight="30.0" prefWidth="271.0" />
+                                                      <Button fx:id="btnNovoAndamento3" layoutX="819.0" layoutY="471.0" mnemonicParsing="false" onAction="#inserirMovimentoVara" prefHeight="34.0" prefWidth="38.0" />
+                                                      <ComboBox fx:id="comboBuscaVaraComarca" layoutX="93.0" layoutY="14.0" prefHeight="30.0" prefWidth="243.0" />
+                                                      <TextField fx:id="txtStatusVara" layoutX="825.0" layoutY="312.0" prefHeight="25.0" prefWidth="226.0" />
                                                    </children>
                                                 </AnchorPane>
                                              </content>
@@ -383,21 +422,58 @@
                                     </Tab>
                                     <Tab text="Tema">
                                        <content>
-                                          <ScrollPane prefHeight="540.0" prefWidth="890.0">
+                                          <ScrollPane prefHeight="506.0" prefWidth="890.0">
                                              <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="1113.0">
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="1109.0">
                                                    <children>
-                                                      <Label layoutX="66.0" layoutY="62.0" text="Tema:" />
-                                                      <TextField layoutX="120.0" layoutY="57.0" prefHeight="31.0" prefWidth="661.0" />
-                                                      <ListView layoutX="120.0" layoutY="103.0" prefHeight="200.0" prefWidth="661.0" />
-                                                      <Button layoutX="795.0" layoutY="57.0" mnemonicParsing="false" text="Busca" />
-                                                      <Label layoutX="120.0" layoutY="315.0" text="Nome" />
-                                                      <Label layoutX="120.0" layoutY="344.0" text="Numero" />
-                                                      <Label layoutX="118.0" layoutY="377.0" text="Comarca" />
-                                                      <Label layoutX="411.0" layoutY="377.0" text="Vara" />
-                                                      <Label layoutX="118.0" layoutY="412.0" text="Tema" />
-                                                      <Label layoutX="409.0" layoutY="412.0" text="Valor" />
-                                                      <Label layoutX="696.0" layoutY="412.0" text="Honorários" />
+                                                      <ImageView fitHeight="583.0" fitWidth="1110.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../guiWAdvImagens/ConsultaporTema.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ListView fx:id="listNomesTema" layoutX="66.0" layoutY="60.0" prefHeight="200.0" prefWidth="519.0" stylesheets="@styles.css" />
+                                                      <ListView fx:id="listProcNomesTema" layoutX="608.0" layoutY="60.0" prefHeight="200.0" prefWidth="444.0" stylesheets="@styles.css" />
+                                                      <TextField fx:id="txtNomeSelecionado4" layoutX="66.0" layoutY="280.0" prefHeight="30.0" prefWidth="520.0" promptText="Nome" />
+                                                      <TextField fx:id="txtProcSelecionado4" layoutX="607.0" layoutY="280.0" prefHeight="30.0" prefWidth="447.0" promptText="Processo" />
+                                                      <Label fx:id="labelComarca4" layoutX="71.0" layoutY="321.0" prefHeight="20.0" prefWidth="278.0" />
+                                                      <Label fx:id="labelVara4" layoutX="376.0" layoutY="321.0" prefHeight="20.0" prefWidth="196.0" />
+                                                      <TextArea fx:id="taAndamentos4" layoutX="40.0" layoutY="351.0" prefHeight="217.0" prefWidth="640.0" />
+                                                      <Label fx:id="labelTema4" layoutX="618.0" layoutY="321.0" prefHeight="20.0" prefWidth="164.0" />
+                                                      <ComboBox fx:id="comboBuscaTema" layoutX="95.0" layoutY="14.0" prefHeight="30.0" prefWidth="241.0" />
+                                                      <TextField fx:id="txtDataNovoAndamento4" layoutX="772.0" layoutY="394.0" prefHeight="30.0" prefWidth="129.0" />
+                                                      <TextField fx:id="txtNovoAndamento4" layoutX="700.0" layoutY="437.0" prefHeight="30.0" prefWidth="273.0" />
+                                                      <Button fx:id="btnNovoAndamento4" layoutX="821.0" layoutY="471.0" mnemonicParsing="false" onAction="#inserirMovimentoTema" prefHeight="48.0" prefWidth="35.0" />
+                                                      <TextField fx:id="txtStatusTema" layoutX="837.0" layoutY="319.0" prefHeight="25.0" prefWidth="213.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </ScrollPane>
+                                       </content>
+                                    </Tab>
+                                    <Tab text="Status">
+                                       <content>
+                                          <ScrollPane prefHeight="506.0" prefWidth="890.0">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="1109.0">
+                                                   <children>
+                                                      <ImageView fitHeight="583.0" fitWidth="1110.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../guiWAdvImagens/ConsultaporTema.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ListView fx:id="listNomesStatus" layoutX="66.0" layoutY="60.0" prefHeight="200.0" prefWidth="738.0" stylesheets="@styles.css" />
+                                                      <TextField fx:id="txtNomeSelecionado41" layoutX="66.0" layoutY="280.0" prefHeight="30.0" prefWidth="520.0" promptText="Nome" />
+                                                      <TextField fx:id="txtProcSelecionado41" layoutX="607.0" layoutY="280.0" prefHeight="30.0" prefWidth="447.0" promptText="Processo" />
+                                                      <Label fx:id="labelComarca41" layoutX="71.0" layoutY="321.0" prefHeight="20.0" prefWidth="278.0" />
+                                                      <Label fx:id="labelVara41" layoutX="376.0" layoutY="321.0" prefHeight="20.0" prefWidth="196.0" />
+                                                      <TextArea fx:id="taAndamentos41" layoutX="40.0" layoutY="351.0" prefHeight="217.0" prefWidth="640.0" />
+                                                      <Label fx:id="labelTema41" layoutX="618.0" layoutY="321.0" prefHeight="20.0" prefWidth="164.0" />
+                                                      <ComboBox fx:id="comboBuscaStatusTema" layoutX="95.0" layoutY="14.0" prefHeight="30.0" prefWidth="241.0" />
+                                                      <TextField fx:id="txtDataNovoAndamento41" layoutX="772.0" layoutY="394.0" prefHeight="30.0" prefWidth="129.0" />
+                                                      <TextField fx:id="txtNovoAndamento41" layoutX="700.0" layoutY="437.0" prefHeight="30.0" prefWidth="273.0" />
+                                                      <Button fx:id="btnNovoAndamento41" layoutX="821.0" layoutY="471.0" mnemonicParsing="false" onAction="#inserirMovimentoStatus" prefHeight="48.0" prefWidth="35.0" />
+                                                      <TextField fx:id="txtStatusTema1" layoutX="837.0" layoutY="319.0" prefHeight="25.0" prefWidth="213.0" />
+                                                      <ComboBox fx:id="comboBuscaStatus" layoutX="405.0" layoutY="17.0" prefHeight="25.0" prefWidth="180.0" />
                                                    </children>
                                                 </AnchorPane>
                                              </content>

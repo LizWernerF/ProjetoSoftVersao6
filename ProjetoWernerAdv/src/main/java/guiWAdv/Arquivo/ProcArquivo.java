@@ -1,12 +1,8 @@
-package guiWAdv;
+package guiWAdv.Arquivo;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import guiWAdv.User;
 
-public class Proc implements Serializable {
-
-	private static final long serialVersionUID = 3789909326487155148L;
+public class ProcArquivo {
 	private int Idproc;
 	private User cliente;
     private String numeroprocesso;
@@ -18,30 +14,8 @@ public class Proc implements Serializable {
     private String valorhono;
     private String status;
     private String matricula;
-    private String sistema;
 	
-    public Proc() {
-    	historico = new ArrayList<>(); // Inicialização da lista de históricos no construtor
-    	
-    }
-    
-    
-    
-    public Proc(String numeroprocesso, String comarca, String vara, String tema, String nomecliente,
-			String valorcausa, String valorhono, String status, String matricula, String sistema) {
-		super();
-		
-		this.numeroprocesso = numeroprocesso;
-		this.comarca = comarca;
-		this.vara = vara;
-		this.tema = tema;
-		this.nomecliente = nomecliente;
-		this.valorcausa = valorcausa;
-		this.valorhono = valorhono;
-		this.status = status;
-		this.matricula = matricula;
-		this.sistema = sistema;
-	}
+   
 	public int getIdproc() {
 		return Idproc;
 	}
@@ -109,13 +83,6 @@ public class Proc implements Serializable {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	public String getSistema() {
-		return sistema;
-	}
-	public void setSistema(String sistema) {
-		this.sistema = sistema;
-	}
-	
 	
 	@Override
 	public String toString() {
@@ -124,26 +91,7 @@ public class Proc implements Serializable {
 				+ valorhono + ", status=" + status + ", matricula=" + matricula + "]";
 	}
 	
-	public static Proc fromString(String str) {
-	    // Converte a string para um objeto Proc
-	    return new Proc(str, str, str, str, str, str, str, str, str, str);
-	}
 	
-	 private List<Historico> historico;
-	 
-	 public void adicionarHistorico(Historico historico) {
-		    this.historico.add(historico);
-		}
-
-		public List<Historico> getHistorico() {
-		    return historico;
-		}
-
-		public void removerHistorico(Historico historico) {
-		    this.historico.remove(historico);
-		}
 	
-		
-		
 	
 }

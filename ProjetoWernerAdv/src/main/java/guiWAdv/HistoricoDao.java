@@ -5,7 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -239,7 +244,8 @@ public class HistoricoDao {
 		    
 		    
 		 // Método para buscar idHistorico com base em data e descricao
-		    private int buscarIdHistoricoPorDataDescricao(String dataEDescricao) {
+		    @SuppressWarnings("unused")
+			private int buscarIdHistoricoPorDataDescricao(String dataEDescricao) {
 		        Connection connection = null;
 		        PreparedStatement statement = null;
 		        ResultSet resultSet = null;
@@ -289,7 +295,8 @@ public class HistoricoDao {
 		    }
 		    
 		 // Método para buscar um registro de histórico por idHistorico
-		    private Historico buscarHistoricoPorId(int idHistorico) {
+		    @SuppressWarnings("unused")
+			private Historico buscarHistoricoPorId(int idHistorico) {
 		        Connection connection = null;
 		        PreparedStatement statement = null;
 		        ResultSet resultSet = null;
@@ -356,10 +363,10 @@ public class HistoricoDao {
 		            resultSet = statement.executeQuery();
 
 		            if (resultSet.next()) {
-		                int idHistorico = resultSet.getInt("idHistorico");
-		                int idProcesso = resultSet.getInt("idProcesso");
-		                String data = resultSet.getString("data");
-		                String descricao = resultSet.getString("descricao");
+		                resultSet.getInt("idHistorico");
+		                resultSet.getInt("idProcesso");
+		                resultSet.getString("data");
+		                resultSet.getString("descricao");
 
 		                historico = new Historico();
 		            }
@@ -649,7 +656,73 @@ public class HistoricoDao {
 		        return andamentos;
 		    }
 		    
-		    
+		    public List<String> getDatasEDescricoesPorIdProcesso1(int idProcesso) throws SQLException {
+		    	 Connection connection = DataBase.getDBConnection(); // Use a mesma conexão do seu método obterNomesClientes
+		         List<String> datasEDescricoes = new ArrayList<>();
+
+		         // Execute uma consulta SQL para obter datas e descrições com base no ID do processo
+		         String sql = "SELECT data, descricao FROM historico WHERE idProcesso = ?";
+		         
+		         try (PreparedStatement statement = connection.prepareStatement(sql)) {
+		             statement.setInt(1, idProcesso);
+		             ResultSet resultSet = statement.executeQuery();
+
+		             // Criar uma lista para armazenar objetos de Andamento
+		             List<Andamento> andamentos = new ArrayList<>();
+
+		             // Iterar sobre o resultado e adicionar os andamentos à lista
+		             while (resultSet.next()) {
+		                 String dataString = resultSet.getString("data");
+		                 String descricao = resultSet.getString("descricao");
+
+		                 // Parse da data no formato "dd/MM/yyyy"
+		                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		                 Date data = dateFormat.parse(dataString);
+
+		                 // Crie um objeto de Andamento com data e descrição
+		                 Andamento andamento = new Andamento(data, descricao);
+
+		                 // Adicione o andamento à lista
+		                 andamentos.add(andamento);
+		             }
+
+		             // Ordene a lista de andamentos pela data (do mais recente para o mais antigo)
+		             Collections.sort(andamentos, Comparator.comparing(Andamento::getData).reversed());
+
+		             // Converta a lista ordenada de volta para uma lista de strings para retornar
+		             for (Andamento andamento : andamentos) {
+		                 // Formatando a data de volta para o formato "dd/MM/yyyy"
+		                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		                 String dataFormatada = dateFormat.format(andamento.getData());
+
+		                 String dataEDescricao = dataFormatada + ": " + andamento.getDescricao();
+		                 datasEDescricoes.add(dataEDescricao);
+		             }
+		         } catch (SQLException | ParseException exception) {
+		             exception.printStackTrace();
+		         }
+
+		         return datasEDescricoes;
+		     }
+
+		     // Classe auxiliar para representar um Andamento
+		     private static class Andamento {
+		         private final Date data;
+		         private final String descricao;
+
+		         public Andamento(Date data, String descricao) {
+		             this.data = data;
+		             this.descricao = descricao;
+		         }
+
+		         public Date getData() {
+		             return data;
+		         }
+
+		         public String getDescricao() {
+		             return descricao;
+		         }
+		     }
 		    
 		    
 }

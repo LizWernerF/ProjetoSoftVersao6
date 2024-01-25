@@ -11,7 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.WernerADV.Software.DataBase;
-import com.WernerADV.Software.App;
 
 public class UserDao implements IUserDao{
 
@@ -87,7 +86,7 @@ public class UserDao implements IUserDao{
 		ResultSet resultSet = null;
 		try {
 			connection = com.WernerADV.Software.DataBase.getDBConnection();
-			connection.setAutoCommit(false);
+		
 			String query = "INSERT INTO user(nome, telefone, cpf, rg, nacionalidade, estadocivil, profissao, idfuncional, datanascimento, endereco, cidade, estado, cep, mat1, ref1, cargh1, datainicio1, cargo1, nivel1, trienio1, dataaposentadoria1,mat2, ref2, cargh2, datainicio2, cargo2, nivel2, trienio2, dataposentadoria2) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			int counter = 1;
@@ -251,7 +250,7 @@ public class UserDao implements IUserDao{
         return nomesClientes;
     }
     
-    public List<String> obterNomesClientes2() throws SQLException {
+	public List<String> obterNomesClientes2() throws SQLException {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -511,6 +510,41 @@ public class UserDao implements IUserDao{
 
 	    return null;
 	}
+	
+	 public List<String> buscarTodosNomes() throws SQLException {
+	        Connection connection = null;
+	        PreparedStatement statement = null;
+	        ResultSet resultSet = null;
+	        List<String> nomes = new ArrayList<>();
+
+	        try {
+	            connection = DataBase.getDBConnection();
+	            String query = "SELECT nome FROM user";
+	            statement = connection.prepareStatement(query);
+	            resultSet = statement.executeQuery();
+
+	            while (resultSet.next()) {
+	                nomes.add(resultSet.getString("nome"));
+	            }
+	        } catch (SQLException exception) {
+	            logger.log(Level.SEVERE, exception.getMessage());
+	        } finally {
+	        	 // Feche a conexão, o statement e o resultSet no bloco finally
+		        if (resultSet != null) {
+		            resultSet.close();
+		        }
+
+		        if (statement != null) {
+		            statement.close();
+		        }
+
+		        if (connection != null) {
+		            connection.close();
+		        }
+		    }
+
+		    return nomes;
+		}
 	
 	public User buscaClientePeloNomeTabEditar(String nomeCliente) throws SQLException {
 	    Connection connection = null;

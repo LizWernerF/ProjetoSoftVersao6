@@ -1,12 +1,9 @@
 /* Defina as configurações gerais para todo o aplicativo */
 .root {
-    -fx-font: "Lexend Deca"; /* Defina a fonte como Lexend Deca */
-    -fx-font-size: 14;
-    -fx-background: lightgrey; /* Fundo */
+     -fx-background: lightgrey; /* Fundo */
     -fx-control-inner-background: rgba(0,0,0,0);
     -fx-text-fill: black;
-   
-}
+   }
 
 
 /* Estilo para botões */

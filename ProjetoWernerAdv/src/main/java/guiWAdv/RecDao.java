@@ -435,6 +435,7 @@ public class RecDao {
 	                rec.setStatus(resultSet.getString("status"));
 	                rec.setJulgador(resultSet.getString("julgador"));
 	                rec.setRelator(resultSet.getString("relator"));
+	              
 	                // Defina outros campos da classe Rec conforme necessário
 	            }
 	        } catch (SQLException exception) {
@@ -676,6 +677,127 @@ public class RecDao {
 		    }
 			return false;
 	    }
+	    
+	    
+	    public List<String> buscarNumerosRecursoPorNomeCliente(String nomedocliente) throws SQLException {
+	        Connection connection = null;
+	        PreparedStatement statement = null;
+	        ResultSet resultSet = null;
+	        List<String> numerosRecursos = new ArrayList<>();
+
+	        try {
+	            connection = DataBase.getDBConnection();
+	            String query = "SELECT numerorecurso FROM rec WHERE nomedocliente = ?";
+	            statement = connection.prepareStatement(query);
+	            statement.setString(1, nomedocliente);
+	            resultSet = statement.executeQuery();
+
+	            while (resultSet.next()) {
+	                numerosRecursos.add(resultSet.getString("numerorecurso"));
+	            }
+	        } catch (SQLException exception) {
+	            logger.log(Level.SEVERE, exception.getMessage());
+	        } finally {
+	            if (resultSet != null) {
+	                resultSet.close();
+	            }
+	            if (statement != null) {
+	                statement.close();
+	            }
+	            if (connection != null) {
+	                connection.close();
+	            }
+	        }
+
+	        return numerosRecursos;
+	    }
+
+	    
+	    
+	    
+	    public void moverParaRecArquivo(int idRec) throws SQLException {
+	        Connection connection = null;
+	        PreparedStatement moveStatement = null;
+	        PreparedStatement deleteStatement = null;
+
+	        try {
+	            connection = com.WernerADV.Software.DataBase.getDBConnection();
+	            connection.setAutoCommit(false);
+
+	            // 1. Inserir na tabela recarquivo
+	            String moveQuery = "INSERT INTO recarquivo(Idrec, numerorecurso, nomedocliente, processoorigem, tiporecurso, recorridoourecorrente, status, julgador, relator) SELECT Idrec, numerorecurso, nomedocliente, processoorigem, tiporecurso, recorridoourecorrente, status, julgador, relator FROM rec WHERE Idrec = ?";
+	            moveStatement = connection.prepareStatement(moveQuery);
+	            moveStatement.setInt(1, idRec);
+	            moveStatement.executeUpdate();
+
+	            // 2. Excluir da tabela rec
+	            String deleteQuery = "DELETE FROM rec WHERE Idrec = ?";
+	            deleteStatement = connection.prepareStatement(deleteQuery);
+	            deleteStatement.setInt(1, idRec);
+	            deleteStatement.executeUpdate();
+
+	            connection.commit();
+	        } catch (SQLException exception) {
+	            if (connection != null) {
+	                connection.rollback();
+	            }
+	            logger.log(Level.SEVERE, exception.getMessage());
+	        } finally {
+	            if (moveStatement != null) {
+	                moveStatement.close();
+	            }
+
+	            if (deleteStatement != null) {
+	                deleteStatement.close();
+	            }
+
+	            if (connection != null) {
+	                connection.close();
+	            }
+	        }
+	    }
+	
+	    
+	    public int obterIdRecPorNumeroRecurso(String numeroRecurso) throws SQLException {
+	        Connection connection = null;
+	        PreparedStatement statement = null;
+	        ResultSet resultSet = null;
+
+	        try {
+	            connection = com.WernerADV.Software.DataBase.getDBConnection();
+	            connection.setAutoCommit(false);
+
+	            String query = "SELECT Idrec FROM rec WHERE numerorecurso = ?";
+	            statement = connection.prepareStatement(query);
+	            statement.setString(1, numeroRecurso);
+
+	            resultSet = statement.executeQuery();
+
+	            if (resultSet.next()) {
+	                return resultSet.getInt("Idrec");
+	            } else {
+	                return -1; // Retorna -1 se não encontrar nenhum Idrec para o número do recurso
+	            }
+	        } catch (SQLException exception) {
+	            exception.printStackTrace(); // Trate a exceção conforme necessário
+	        } finally {
+	            if (resultSet != null) {
+	                resultSet.close();
+	            }
+
+	            if (statement != null) {
+	                statement.close();
+	            }
+
+	            if (connection != null) {
+	                connection.close();
+	            }
+	        }
+
+	        return -1;
+	    }
+	    
+	    
 	    
 	    
 	    

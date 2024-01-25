@@ -228,10 +228,10 @@ public class AndamentoRecDao {
             resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                int idAndamento = resultSet.getInt("idAndamento");
-                int idRecurso = resultSet.getInt("idRecurso");
-                String dataRecurso = resultSet.getString("dataRecurso");
-                String descricaoRecurso = resultSet.getString("descricaoRecurso");
+                resultSet.getInt("idAndamento");
+                resultSet.getInt("idRecurso");
+                resultSet.getString("dataRecurso");
+                resultSet.getString("descricaoRecurso");
 
                 AndamentoRecDao = new AndamentoRecDao();
             }

@@ -2,51 +2,56 @@ package guiWAdv;
 
 import java.awt.Desktop;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.apache.poi.xssf.usermodel.XSSFCellStyle;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.DataFormat;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import Selic.SelicRateExtractor;
 import infoCalculos.Calculos;
 import infoCalculos.CalculosDao;
+import infoCalculos.DbpisoDao;
+import infoCalculos.DbpisoDao.LinhaPlanilha;
 import infoCalculos.Demonstrativo_interniveis;
 import infoCalculos.Demonstrativo_interniveisDao;
+import infoCalculos.Planilha;
 import infoCalculos.escolaNE;
+import infoCalculos.escolaNEDao;
 import infoCalculos.professorescola;
 import infoCalculos.professorescolaDao;
-import infoCalculos.escolaNEDao;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.util.CellRangeAddress;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class Tela05CalculosController {
 
@@ -57,6 +62,7 @@ public class Tela05CalculosController {
 	private HistoricoDao HistoricoDao = new HistoricoDao();
 	private AndamentoRecDao andamentoRecDao;
 	private escolaNEDao escolaNEDao;
+	private DbpisoDao dbpisoDao = new DbpisoDao();
 
 	private void alert(String title, String message, AlertType alertType) {
 		Platform.runLater(() -> {
@@ -64,14 +70,6 @@ public class Tela05CalculosController {
 			alert.setTitle("Werner Advogados");
 			alert.setHeaderText(title);
 			alert.setContentText(message);
-
-			// Carregue o ícone da imagem
-			Image icon = new Image(getClass().getResourceAsStream("/guiWAdv/LOGO.png"));
-			ImageView imageView = new ImageView(icon);
-
-			// Configure o ícone do Alert
-			alert.setGraphic(imageView);
-
 			alert.showAndWait();
 		});
 	}
@@ -431,6 +429,7 @@ public class Tela05CalculosController {
 		String notaEscola = txtRetornoNotaNE.getText();
 		String nomeProfessor = txtRetornoNomeNE.getText();
 		int idescolasNE = Integer.parseInt(labelIDEscola.getText());
+		String matriculaProfessor = txtRetornoMatriculaNE.getText();
 
 		if (idescolasNE != -1 && !nomeEscola.isEmpty() && !notaEscola.isEmpty() && !nomeProfessor.isEmpty()) {
 			professorescola escola = new professorescola();
@@ -438,6 +437,7 @@ public class Tela05CalculosController {
 			escola.setNotaEscolaNE(notaEscola);
 			escola.setNome(nomeProfessor);
 			escola.setIdescolasNE(idescolasNE);
+			escola.setMatricula(matriculaProfessor);
 
 			try {
 				// Salve no banco de dados
@@ -650,8 +650,6 @@ public class Tela05CalculosController {
 		CellStyle collorStyle = workbook.createCellStyle();
 		collorStyle.setFillForegroundColor(IndexedColors.PALE_BLUE.getIndex());
 		collorStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-
-		
 
 		// Cabecalho
 		Row row8 = sheet.createRow(7);
@@ -1070,7 +1068,6 @@ public class Tela05CalculosController {
 		collorStyle.setFillForegroundColor(IndexedColors.PALE_BLUE.getIndex());
 		collorStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
-		
 		// Linha 1
 		Row row1 = sheet.createRow(0);
 		// Célula 5
@@ -1141,9 +1138,9 @@ public class Tela05CalculosController {
 		// DETERMINANDO NEGRITO
 		CellStyle boldStyle = workbook.createCellStyle();
 		Font boldFont = workbook.createFont();
-		boldFont.setFontHeightInPoints((short)10);
+		boldFont.setFontHeightInPoints((short) 10);
 		boldFont.setFontName("Arial");
-	    boldFont.setColor(IndexedColors.BLACK.getIndex());
+		boldFont.setColor(IndexedColors.BLACK.getIndex());
 		boldFont.setBold(true);
 		boldStyle.setFont(boldFont);
 
@@ -1164,7 +1161,7 @@ public class Tela05CalculosController {
 		centeredStyle.setAlignment(HorizontalAlignment.CENTER); // Configura o alinhamento horizontal para centralizado
 		centeredStyle.setVerticalAlignment(VerticalAlignment.CENTER); // Configura o alinhamento vertical para
 																		// centralizado
-		
+
 		// Cabecalho
 		Row row8 = sheet.createRow(7);
 		row8.createCell(0).setCellValue("PERÍODO");
@@ -1326,12 +1323,10 @@ public class Tela05CalculosController {
 				if (j == 0) {
 					row64.createCell(j).setCellValue("Total");
 					row64.getCell(j).setCellStyle(collorStyle);
-				}
-					else if (j == 12) {
-					    row64.createCell(j).setCellValue(valorTotal);
-					    row64.getCell(j).setCellStyle(currencyStyle);
-					}
-				else {
+				} else if (j == 12) {
+					row64.createCell(j).setCellValue(valorTotal);
+					row64.getCell(j).setCellStyle(currencyStyle);
+				} else {
 					row64.createCell(j).setCellValue("");
 				}
 			}
@@ -1482,6 +1477,121 @@ public class Tela05CalculosController {
 		// Exibir o valor do índice calculado na TextField txtJurosNEAtualizados
 		txtJurosNEAtualizados1.setText(String.valueOf(indiceJuros + "%"));
 
+	}
+
+	// PLANILHA DE CÁLCULO PISO
+
+	@FXML
+	private TextField txtTemaCalculoPiso;
+	@FXML
+	private TextField txtNomeBuscaPiso;
+	@FXML
+	private Button btnBuscaClientePiso;
+	@FXML
+	private ListView listClientesBuscaPiso;
+	@FXML
+	private TextField txtRetornoNomePiso;
+	@FXML
+	private TextField txtRetornoMatriculaPiso;
+	@FXML
+	private ListView listMatriculasPiso;
+	@FXML
+	private DatePicker DataCalculoInicio;
+	@FXML
+	private DatePicker DataCalculoFinal;
+	@FXML
+	private TextField txtDataFinalSelic11;
+	@FXML
+	private TextField txtValorFinalSelic11;
+	@FXML
+	private TextField txtDataDoCalculoPiso;
+	@FXML
+	private TextField txtJurosNEAtualizados11;
+	@FXML
+	private TextField txtPrincipalDevidoPiso;
+	@FXML
+	private TextField txtDataInicioMat;
+	@FXML
+	private TextField txtRefMat;
+	@FXML
+	private TextField txtNivelMat;
+	@FXML
+	private TextField txtTrienioMat;
+	@FXML
+	private Button btnCalculaSelic11;
+	@FXML
+	private Button btnCalculaJurosPiso;
+	@FXML
+	private Button btnGerarCalculoPiso;
+	@FXML
+	private Button btnGuardarCalculoPiso;
+	@FXML
+	private TextField txtCargaHoraria;
+
+	private List<Double> valoresA = new ArrayList<>();
+	private List<Double> valoresB = new ArrayList<>();
+
+	@FXML
+	private void handleGerarPlanilhaButtonAction(ActionEvent event) throws IOException, SQLException {
+		try {
+			// Obtenha os valores de nivel e cargaHoraria
+			String nivel = txtNivelMat.getText();
+			String cargaHoraria = txtCargaHoraria.getText();
+
+			// Obtenha as datas selecionadas
+			LocalDate dataInicial = DataCalculoInicio.getValue();
+			LocalDate dataFinal = DataCalculoFinal.getValue();
+
+			// Verifique se as datas são válidas
+			if (dataInicial == null || dataFinal == null) {
+				// Exiba uma mensagem de erro se as datas não forem válidas
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setTitle("Erro");
+				alert.setHeaderText("Datas inválidas");
+				alert.setContentText("Por favor, selecione uma data inicial e uma data final válidas.");
+				alert.showAndWait();
+				return;
+			}
+
+			List<LinhaPlanilha> valores = dbpisoDao.obterValoresPlanilha(Integer.parseInt(cargaHoraria), dataInicial,
+					dataFinal, Integer.parseInt(nivel), Double.parseDouble(txtTrienioMat.getText()));
+
+			// Crie uma instância da classe Planilha
+			Planilha planilha = new Planilha();
+
+			// Defina a data inicial e o nome do arquivo
+			String arquivo = "planilha.xlsx";
+
+			// Chame o método gerarPlanilha para gerar a planilha
+			planilha.gerarPlanilha(valores, arquivo);
+
+			if (Desktop.isDesktopSupported()) {
+				Desktop desktop = Desktop.getDesktop();
+				try {
+					File file = new File(arquivo);
+					desktop.open(file);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			// Exiba uma mensagem de sucesso se a planilha for gerada corretamente
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("Sucesso");
+			alert.setHeaderText("Planilha gerada");
+			alert.setContentText("A planilha foi gerada com sucesso.");
+			alert.showAndWait();
+		} catch (IOException e) {
+			// Exiba uma mensagem de erro se ocorrer uma exceção durante a execução do
+			// método
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Erro");
+			alert.setHeaderText("Erro ao gerar planilha");
+			alert.setContentText(
+					"Ocorreu um erro ao gerar a planilha. Por favor, verifique a entrada de dados e tente novamente.");
+			alert.showAndWait();
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -21,6 +21,7 @@ public class Dbpiso {
 	public void setCargahoraria(String cargahoraria) {
 		this.cargahoraria = cargahoraria;
 	}
+	
 	public String getAno() {
 		return ano;
 	}
@@ -46,6 +47,14 @@ public class Dbpiso {
 		this.valorpisonacional = valorpisonacional;
 	}
 	
+	@Override
+	public String toString() {
+		return "Dbpiso [iddbpiso=" + iddbpiso + ", cargahoraria=" + cargahoraria + ", ano=" + ano + ", nivel=" + nivel
+				+ ", valorproventoestado=" + valorproventoestado + ", valorpisonacional=" + valorpisonacional
+				+ ", getIddbpiso()=" + getIddbpiso() + ", getCargahoraria()=" + getCargahoraria() + ", getAno()="
+				+ getAno() + ", getNivel()=" + getNivel() + ", getValorproventoestado()=" + getValorproventoestado()
+				+ ", getValorpisonacional()=" + getValorpisonacional() + "]";
+	}
 	
 	
 }

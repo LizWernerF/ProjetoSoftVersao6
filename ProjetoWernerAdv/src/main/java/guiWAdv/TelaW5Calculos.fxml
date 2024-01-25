@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
@@ -103,24 +104,29 @@
                               <Image url="@../guiWAdvImagens/21%20-%20piso.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="txtTemaCalculoNE11" layoutX="170.0" layoutY="111.0" text="Piso" />
-                        <TextField fx:id="txtNomeBuscaNE11" layoutX="170.0" layoutY="149.0" prefHeight="25.0" prefWidth="549.0" promptText="Nome do Cliente para busca" styleClass="text-field" />
-                        <Button fx:id="btnBuscaNomeNE11" layoutX="729.0" layoutY="136.0" mnemonicParsing="false" onAction="#buscarNomesClientesNE" prefHeight="50.0" prefWidth="50.0" />
-                        <ListView fx:id="listClientesBuscaNE11" layoutX="170.0" layoutY="181.0" prefHeight="106.0" prefWidth="552.0" />
-                        <TextField fx:id="txtRetornoNomeNE11" layoutX="170.0" layoutY="298.0" prefHeight="25.0" prefWidth="552.0" promptText="Nome do Cliente para o Cálculo" />
-                        <ListView fx:id="listMatriculasNE11" layoutX="170.0" layoutY="333.0" prefHeight="54.0" prefWidth="360.0" />
-                        <TextField fx:id="txtRetornoMatriculaNE11" layoutX="541.0" layoutY="333.0" prefHeight="25.0" prefWidth="180.0" promptText="Matrícula do cliente" />
+                        <TextField fx:id="txtTemaCalculoPiso" layoutX="170.0" layoutY="111.0" text="Piso" />
+                        <TextField fx:id="txtNomeBuscaPiso" layoutX="170.0" layoutY="149.0" prefHeight="25.0" prefWidth="549.0" promptText="Nome do Cliente para busca" styleClass="text-field" />
+                        <Button fx:id="btnBuscaClientePiso" layoutX="729.0" layoutY="136.0" mnemonicParsing="false" onAction="#buscarNomesClientesNE" prefHeight="50.0" prefWidth="50.0" />
+                        <ListView fx:id="listClientesBuscaPiso" layoutX="170.0" layoutY="181.0" prefHeight="106.0" prefWidth="552.0" />
+                        <TextField fx:id="txtRetornoNomePiso" layoutX="170.0" layoutY="298.0" prefHeight="25.0" prefWidth="552.0" promptText="Nome do Cliente para o Cálculo" />
+                        <ListView fx:id="listMatriculasPiso" layoutX="170.0" layoutY="333.0" prefHeight="54.0" prefWidth="360.0" />
+                        <TextField fx:id="txtRetornoMatriculaPiso" layoutX="541.0" layoutY="333.0" prefHeight="25.0" prefWidth="180.0" promptText="Matrícula do cliente" />
                         <TextField fx:id="txtDataFinalSelic11" layoutX="170.0" layoutY="440.0" promptText="Data atual - Selic" />
                         <TextField fx:id="txtValorFinalSelic11" layoutX="326.0" layoutY="440.0" promptText="Valor da SELIC" />
-                        <Button fx:id="btnCalculaSelic11" layoutX="502.0" layoutY="438.0" mnemonicParsing="false" onAction="#calcularSelic" prefHeight="30.0" prefWidth="30.0" />
-                        <TextField fx:id="txtDataDoCalculoNE11" layoutX="170.0" layoutY="475.0" promptText="Data do cálculo" />
+                        <Button fx:id="btnCalculaSelic11" layoutX="502.0" layoutY="438.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+                        <TextField fx:id="txtDataDoCalculoPiso" layoutX="170.0" layoutY="475.0" promptText="Data do cálculo" />
                         <TextField fx:id="txtJurosNEAtualizados11" layoutX="326.0" layoutY="475.0" promptText="Indice de Juros " />
-                        <Button fx:id="btnCalculaJurosNE11" layoutX="502.0" layoutY="476.0" mnemonicParsing="false" onAction="#calcularJurosNE" prefHeight="30.0" prefWidth="30.0" />
-                        <TextField fx:id="txtPrincipalLiquidoNE11" layoutX="170.0" layoutY="516.0" promptText="Principal Líquido" />
-                        <TextField fx:id="txtDescontoPrevidenciaNE11" layoutX="170.0" layoutY="556.0" promptText="RioPrev" />
-                        <TextField fx:id="txtTotalCalculoNE11" layoutX="170.0" layoutY="599.0" promptText="Total" />
-                        <Button fx:id="btnGerarCalculoNE11" layoutX="373.0" layoutY="552.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
-                        <Button layoutX="484.0" layoutY="554.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+                        <Button fx:id="btnCalculaJurosPiso" layoutX="502.0" layoutY="476.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+                        <TextField fx:id="txtPrincipalDevidoPiso" layoutX="170.0" layoutY="516.0" promptText="Principal Líquido" />
+                        <Button fx:id="btnGerarCalculoPiso" layoutX="374.0" layoutY="552.0" mnemonicParsing="false" onAction="#handleGerarPlanilhaButtonAction" prefHeight="35.0" prefWidth="35.0" />
+                        <Button fx:id="btnGuardarCalculoPiso" layoutX="484.0" layoutY="554.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+                        <TextField fx:id="txtDataInicioMat" layoutX="796.0" layoutY="181.0" promptText="Data Inicial" text="21122021" />
+                        <TextField fx:id="txtRefMat" layoutX="796.0" layoutY="206.0" prefHeight="25.0" prefWidth="80.0" promptText="Ref." />
+                        <TextField fx:id="txtNivelMat" layoutX="885.0" layoutY="206.0" prefHeight="25.0" prefWidth="80.0" promptText="Nível" />
+                        <TextField fx:id="txtTrienioMat" layoutX="796.0" layoutY="234.0" prefHeight="25.0" prefWidth="80.0" promptText="Triênio" />
+                        <DatePicker fx:id="DataCalculoInicio" layoutX="544.0" layoutY="375.0" promptText="Início do cálculo" />
+                        <TextField fx:id="txtCargaHoraria" layoutX="891.0" layoutY="234.0" promptText="Carga horaria" />
+                        <DatePicker fx:id="DataCalculoFinal" layoutX="544.0" layoutY="403.0" promptText="Final do Cálculo" />
                      </children>
                   </AnchorPane>
                </content>

@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.logging.Logger;
 
 import javafx.application.Platform;
@@ -14,6 +16,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -38,13 +41,6 @@ public class Tela03ConsultaProcessoController {
 	        alert.setTitle("Werner Advogados");
 	        alert.setHeaderText(title);
 	        alert.setContentText(message);
-
-	        // Carregue o ícone da imagem
-	        Image icon = new Image(getClass().getResourceAsStream("/guiWAdv/LOGO.png"));
-	        ImageView imageView = new ImageView(icon);
-
-	        // Configure o ícone do Alert
-	        alert.setGraphic(imageView);
 
 	        alert.showAndWait();
 	    });
@@ -455,20 +451,43 @@ listClienteRec.getSelectionModel().selectedItemProperty().addListener((observabl
 		}
     }
 });
-
+listClienteRec1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+    if (newValue != null) {
+        try {
+			onSelecionarRecurso();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+});
 
 
 
 			//TAB EDITAR RECURSO
 
+txtBuscaClienteEditRec.textProperty().addListener((observable, oldValue, newValue) -> {
+    buscarNomesClientesEdita();
+});
+
+// Ouvinte para atualizar os campos com dados do cliente quando um cliente é selecionado
 listClienteEditRec.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-    // Chame a função de atualização com o novo valor selecionado
     try {
-		atualizarCamposComDadosDoCliente(newValue);
-	} catch (SQLException e) {
-		
-		e.printStackTrace();
-	}
+        onSelecionarClienteRecEdita();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+});
+
+// Ouvinte para atualizar os campos com dados do cliente quando um número de recurso é selecionado
+listClienteEditRec1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+    if (newValue != null) {
+        try {
+            atualizarCamposComDadosDoCliente(newValue);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 });
 
 
@@ -522,11 +541,47 @@ listAndamentoRecEdit.getSelectionModel().selectedItemProperty().addListener((obs
 
 
 
+ 											//ARQUIVO
+btnArquivaRec.setOnAction(e -> {
+    if (cboxArquivoRec.isSelected()) {
+        String numeroRecurso = labelNumeroRecurso.getText(); // Obtém o número do recurso da label
+
+        RecDao recDao = new RecDao();
+        try {
+            int idRecParaArquivar = recDao.obterIdRecPorNumeroRecurso(numeroRecurso);
+
+            if (idRecParaArquivar != -1) {
+                recDao.moverParaRecArquivo(idRecParaArquivar);
+                // Atualize sua interface ou faça qualquer outra ação necessária após arquivar o recurso
+
+                // Exiba uma mensagem de sucesso
+                exibirAlerta("Arquivo realizado com sucesso!", AlertType.INFORMATION);
+            } else {
+                // Trate o caso em que o Idrec não foi encontrado
+                exibirAlerta("ID do Recurso não encontrado.", AlertType.WARNING);
+            }
+        } catch (SQLException exception) {
+            // Trate a exceção, se necessário
+            exception.printStackTrace();
+            exibirAlerta("Erro ao arquivar o recurso.", AlertType.ERROR);
+        }
+    } else {
+        // Exiba uma mensagem indicando que a checkbox não está marcada
+        exibirAlerta("Por favor, marque a opção para arquivar o recurso.", AlertType.WARNING);
+    }
+});
+
 
 
      //FECHA INITIALIZE
 	}
-	
+	private void exibirAlerta(String mensagem, AlertType tipo) {
+	    Alert alerta = new Alert(tipo);
+	    alerta.setTitle("Alerta");
+	    alerta.setHeaderText(null);
+	    alerta.setContentText(mensagem);
+	    alerta.showAndWait();
+	}
 	
 	
 													//COMANDO PARA ATUALIZAR COMBOBOX
@@ -1218,7 +1273,10 @@ listAndamentoRecEdit.getSelectionModel().selectedItemProperty().addListener((obs
 		        listAndamentosRec.getSelectionModel().clearSelection();
 		        listAndamentosRec.getItems().clear();
 			}
-			
+			@FXML
+			private ListView<String> listClienteRec1;
+			@FXML
+			private Label labelNomeClienteRec;
 			
 			@FXML
 			private void limparTela3() {
@@ -1244,35 +1302,55 @@ listAndamentoRecEdit.getSelectionModel().selectedItemProperty().addListener((obs
 		    private void buscarNomesClientes() {
 		        String textoBusca = txtClienteRec.getText().trim();
 
-		        if (!textoBusca.isEmpty()) {
-		            try {
-		                List<String> nomesClientes = recDao.buscarNomesClientesPorTexto(textoBusca);
+		         		            	 try {
+		     		        RecDao recDao = new RecDao(); // Crie uma instância de RecDao
+		     		        List<String> nomesClientesRec = recDao.buscarNomesClientesPorTexto(textoBusca);
 
-		                if (nomesClientes.isEmpty()) {
-		                    listClienteRec.getItems().clear(); // Limpa a lista se não houver resultados
-		                } else {
-		                    listClienteRec.getItems().setAll(nomesClientes); // Define os resultados na ListView
-		                }
-		            } catch (SQLException e) {
-		                // Lide com exceções de SQL aqui, se necessário
-		                e.printStackTrace();
-		            }
-		        } else {
-		            listClienteRec.getItems().clear(); // Limpa a lista se o campo de texto estiver vazio
-		        }
-		    }
+		     		        // Usando um conjunto para garantir nomes únicos e ordená-los
+		     		        Set<String> nomesUnicos = new TreeSet<>(nomesClientesRec);
+
+		     		       	                
+		     		       listClienteRec.getItems().setAll(new ArrayList<>(nomesUnicos));
+		   		        // Define os resultados na ListView
+		   		    } catch (SQLException e) {
+		   		        // Lide com exceções de SQL aqui, se necessário
+		   		        e.printStackTrace();
+		   		    }
+		          		}
 			
 			@FXML
 			private void onSelecionarClienteRec() throws SQLException {
 			    // Obtém o item selecionado da lista
-			    Object selectedValue = listClienteRec.getSelectionModel().getSelectedItem();
+			    String selectedCliente = (String) listClienteRec.getSelectionModel().getSelectedItem();
+
+			    if (selectedCliente != null) {
+			        try {
+			            RecDao recDao = new RecDao();
+			            List<String> numerosRecursos = recDao.buscarNumerosRecursoPorNomeCliente(selectedCliente);
+
+			            if (!numerosRecursos.isEmpty()) {
+			            	labelNomeClienteRec.setText(selectedCliente);
+
+			                // Limpe a lista de recursos e adicione os números de recurso do cliente
+			                listClienteRec1.getItems().setAll(numerosRecursos);
+			            }
+			        } catch (SQLException e) {
+			            // Lide com exceções de SQL aqui, se necessário
+			            e.printStackTrace();
+			        }
+			    }
+			}
+			
+			@FXML
+			private void onSelecionarRecurso() throws SQLException {
+			    // Obtém o item selecionado da lista
+			    Object selectedValue = listClienteRec1.getSelectionModel().getSelectedItem();
 
 			    // Verifica se o item selecionado é uma String
 			    if (selectedValue != null && selectedValue instanceof String) {
 			        String newValue = (String) selectedValue;
 
-			        // Agora você pode chamar o método buscarRecPorNome com newValue
-			        Rec rec = recDao.buscarRecPorNome(newValue);
+			        Rec rec = recDao.buscarRecursoPorNumero(newValue);
 
 			       
 			        labelNumeroRecurso.setText(rec.getNumerorecurso());
@@ -1362,53 +1440,69 @@ listAndamentoRecEdit.getSelectionModel().selectedItemProperty().addListener((obs
 		    private void buscarNomesClientesEdita() {
 		        String textoBusca = txtBuscaClienteEditRec.getText().trim();
 
-		        if (!textoBusca.isEmpty()) {
-		            try {
-		                List<String> nomesClientes = recDao.buscarNomesClientesPorTexto(textoBusca);
+		         		            	 try {
+		     		        RecDao recDao = new RecDao(); // Crie uma instância de RecDao
+		     		        List<String> nomesClientesRec = recDao.buscarNomesClientesPorTexto(textoBusca);
 
-		                if (nomesClientes.isEmpty()) {
-		                	listClienteEditRec.getItems().clear(); // Limpa a lista se não houver resultados
-		                } else {
-		                	listClienteEditRec.getItems().setAll(nomesClientes); // Define os resultados na ListView
-		                }
-		            } catch (SQLException e) {
-		                // Lide com exceções de SQL aqui, se necessário
-		                e.printStackTrace();
-		            }
-		        } else {
-		        	listClienteEditRec.getItems().clear(); // Limpa a lista se o campo de texto estiver vazio
-		        }
-		    }
-			
-			
-			private void atualizarCamposComDadosDoCliente(String nomeClienteSelecionado) throws SQLException {
-			    if (nomeClienteSelecionado != null) {
-			        // Use a função buscarRecPorNome para obter o cliente selecionado
-			        Rec clienteSelecionado = recDao.buscarRecPorNomeEditar(nomeClienteSelecionado);
+		     		        // Usando um conjunto para garantir nomes únicos e ordená-los
+		     		        Set<String> nomesUnicos = new TreeSet<>(nomesClientesRec);
 
-			        if (clienteSelecionado != null) {
-			            // Preencha as TextFields com os dados do cliente
-			        	labelNomeEditRec.setText(clienteSelecionado.getNomedocliente());
-			        	txtNumeroRecEdit.setText(clienteSelecionado.getNumerorecurso());
-			        	txtProcOrig.setText(clienteSelecionado.getProcessoorigem());
-			            txtTipoRec.setText(clienteSelecionado.getTiporecurso());
-			            txtRecorridoRecorrente.setText(clienteSelecionado.getRecorridoourecorrente());
-			            txtStatusRec.setText(clienteSelecionado.getStatus());
-			            txtJulgadorRec.setText(clienteSelecionado.getJulgador());
-			            txtRelatorRec.setText(clienteSelecionado.getRelator());
+		     		       	                
+		     		       listClienteEditRec.getItems().setAll(new ArrayList<>(nomesUnicos));
+		   		        // Define os resultados na ListView
+		   		    } catch (SQLException e) {
+		   		        // Lide com exceções de SQL aqui, se necessário
+		   		        e.printStackTrace();
+		   		    }
+		          		}
+			@FXML
+			private ListView<String> listClienteEditRec1;
+			
+			@FXML
+			private void onSelecionarClienteRecEdita() throws SQLException {
+			    // Obtém o item selecionado da lista
+			    String selectedCliente = (String) listClienteEditRec.getSelectionModel().getSelectedItem();
+
+			    if (selectedCliente != null) {
+			        try {
+			            RecDao recDao = new RecDao();
+			            List<String> numerosRecursos = recDao.buscarNumerosRecursoPorNomeCliente(selectedCliente);
+
+			            if (!numerosRecursos.isEmpty()) {
+			            	labelNomeEditRec.setText(selectedCliente);
+
+			                // Limpe a lista de recursos e adicione os números de recurso do cliente
+			                listClienteEditRec1.getItems().setAll(numerosRecursos);
+			            }
+			        } catch (SQLException e) {
+			            // Lide com exceções de SQL aqui, se necessário
+			            e.printStackTrace();
 			        }
-			    } else {
-			        // Se nenhum cliente estiver selecionado, limpe as TextFields
-			    	labelNomeEditRec.setText("");
-			    	txtNumeroRecEdit.clear();
-			    	txtProcOrig.clear();
-			        txtTipoRec.clear();
-			        txtRecorridoRecorrente.clear();
-			        txtStatusRec.clear();
-			        txtJulgadorRec.clear();
-			        txtRelatorRec.clear();
 			    }
 			}
+			
+			private void atualizarCamposComDadosDoCliente(String nomeClienteSelecionado) throws SQLException {
+				 // Obtém o item selecionado da lista
+			    Object selectedValue = listClienteEditRec1.getSelectionModel().getSelectedItem();
+
+			    // Verifica se o item selecionado é uma String
+			    if (selectedValue != null && selectedValue instanceof String) {
+			        String newValue = (String) selectedValue;
+
+			        Rec rec = recDao.buscarRecursoPorNumero(newValue);
+
+			            // Preencha as TextFields com os dados do cliente
+			        	labelNomeEditRec.setText(rec.getNomedocliente());
+			        	txtNumeroRecEdit.setText(rec.getNumerorecurso());
+			        	txtProcOrig.setText(rec.getProcessoorigem());
+			            txtTipoRec.setText(rec.getTiporecurso());
+			            txtRecorridoRecorrente.setText(rec.getRecorridoourecorrente());
+			            txtStatusRec.setText(rec.getStatus());
+			            txtJulgadorRec.setText(rec.getJulgador());
+			            txtRelatorRec.setText(rec.getRelator());
+			        }
+			    }  
+			
 			
 			@FXML
 			private void exibirAndamentosRecEditar() throws SQLException {
@@ -1523,5 +1617,20 @@ listAndamentoRecEdit.getSelectionModel().selectedItemProperty().addListener((obs
 			
 			@FXML
 			private Label labelNomeEditRec;
+			
+			
+										// DATABASE DO ARQUIVO
+			@FXML
+			private Button btnArquivaRec;
+			@FXML
+			private CheckBox cboxArquivoRec;
+			
+			
+			
+			
+			
+			
+			
+			
 			
 }
