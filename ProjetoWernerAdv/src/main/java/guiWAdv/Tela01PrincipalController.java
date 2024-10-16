@@ -56,6 +56,9 @@ public class Tela01PrincipalController implements Initializable {
 	private Tela04GeradorDeDocumentoController geradorDeDocumentoController;
 	@FXML
 	private Tela05CalculosController calculosController;
+	
+	@FXML
+	private Tela06TarefaController tarefaController;
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -1262,6 +1265,33 @@ public class Tela01PrincipalController implements Initializable {
 			stage.setScene(scene);
 
 			Tela05CalculosController calculosController = loader.getController();
+
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	private Button btnTABPANETarefas;
+
+	public void btnTABPANETarefas () {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/guiWAdv/TelaW6Tarefas.fxml"));
+			Parent root = loader.load();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.getIcons().add(new Image(getClass().getResourceAsStream("/guiWAdv/LOGO.png")));
+			stage.setTitle("Werner Advogados");
+			stage.setScene(scene);
+
+			// Obtém uma referência ao controlador do ConsultaProcessoController
+			Tela06TarefaController Tela06TarefaController = loader.getController();
+
+			// Inicialize o ComboBox clienteComboBox1 (supondo que você tenha um método de
+						// inicialização)
+			Tela06TarefaController.initializeComboBox();
+
 
 			stage.show();
 		} catch (IOException e) {

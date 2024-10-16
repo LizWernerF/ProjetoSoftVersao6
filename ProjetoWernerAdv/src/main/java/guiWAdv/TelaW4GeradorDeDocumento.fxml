@@ -153,6 +153,14 @@
                                                 <ChoiceBox fx:id="choiceBoxVaraPiso" layoutX="592.0" layoutY="70.0" prefWidth="150.0" />
                                                 <ChoiceBox fx:id="choiceBoxAtivaInativa" layoutX="592.0" layoutY="115.0" prefWidth="150.0" />
                                                 <Button fx:id="btnGerarInicialPiso" layoutX="826.0" layoutY="63.0" mnemonicParsing="false" onAction="#gerarInicialPiso" prefHeight="62.0" prefWidth="69.0" />
+                                                <Label layoutX="38.0" layoutY="6.0" text="Valor hoje" />
+                                                <Label layoutX="38.0" layoutY="45.0" text="Trienio hoje" />
+                                                <Label layoutX="38.0" layoutY="81.0" text="\% Trienio" />
+                                                <Label layoutX="38.0" layoutY="122.0" text="Total Piso" />
+                                                <Label layoutX="199.0" layoutY="6.0" text="Valor Piso Nacional" />
+                                                <Label layoutX="194.0" layoutY="45.0" text="Trienio Conforme Piso Nacional" />
+                                                <Label layoutX="199.0" layoutY="81.0" text="Diferença Provento/Piso" />
+                                                <Label layoutX="199.0" layoutY="122.0" text="Diferença Total Piso e Trienio" />
                                              </children></AnchorPane>
                                        </content>
                                     </Tab>
@@ -195,9 +203,9 @@
                               <Button fx:id="btnGeraPetInt" layoutX="417.0" layoutY="538.0" mnemonicParsing="false" onAction="#gerarPetInterSelecionada" prefHeight="40.0" prefWidth="53.0" />
                               <ChoiceBox fx:id="choiceBoxValorPorTema" layoutX="956.0" layoutY="487.0" prefWidth="150.0" />
                               <Button fx:id="btnMostrarValores" layoutX="1000.0" layoutY="530.0" mnemonicParsing="false" onAction="#buscarValoresPorTemaNomeMatricula" prefHeight="49.0" prefWidth="52.0" />
-                              <TextField fx:id="txtValorPrincipal" layoutX="963.0" layoutY="588.0" prefHeight="30.0" prefWidth="128.0" />
-                              <TextField fx:id="txtRioPrev" layoutX="963.0" layoutY="628.0" prefHeight="30.0" prefWidth="128.0" />
-                              <TextField fx:id="txtValorFinal" layoutX="963.0" layoutY="667.0" prefHeight="14.0" prefWidth="132.0" />
+                              <TextField fx:id="txtValorPrincipal" layoutX="963.0" layoutY="588.0" prefHeight="30.0" prefWidth="128.0" text="R$ 1.000,00" />
+                              <TextField fx:id="txtRioPrev" layoutX="963.0" layoutY="628.0" prefHeight="30.0" prefWidth="128.0" text="R$ 1.000,00" />
+                              <TextField fx:id="txtValorFinal" layoutX="963.0" layoutY="667.0" prefHeight="14.0" prefWidth="132.0" text="R$ 1.000,00" />
                               <ChoiceBox fx:id="choiceBoxPetPiso" layoutX="667.0" layoutY="487.0" prefWidth="150.0" />
                               <Button fx:id="btnGeraPetPiso" layoutX="709.0" layoutY="536.0" mnemonicParsing="false" onAction="#gerarPetPisoSelecionada" prefHeight="46.0" prefWidth="46.0" />
                               <ListView fx:id="listProcessoseMat" layoutX="656.0" layoutY="203.0" prefHeight="89.0" prefWidth="337.0" />

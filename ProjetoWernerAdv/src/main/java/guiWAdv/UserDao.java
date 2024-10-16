@@ -228,7 +228,7 @@ public class UserDao implements IUserDao{
             resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                nomesClientes.add(resultSet.getString("nome"));
+                nomesClientes.add(resultSet.getString("nome")); 
             }
         } catch (SQLException exception) {
             logger.log(Level.SEVERE, exception.getMessage());

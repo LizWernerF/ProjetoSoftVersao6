@@ -120,7 +120,7 @@
                         <TextField fx:id="txtPrincipalDevidoPiso" layoutX="170.0" layoutY="516.0" promptText="Principal Líquido" />
                         <Button fx:id="btnGerarCalculoPiso" layoutX="374.0" layoutY="552.0" mnemonicParsing="false" onAction="#handleGerarPlanilhaButtonAction" prefHeight="35.0" prefWidth="35.0" />
                         <Button fx:id="btnGuardarCalculoPiso" layoutX="484.0" layoutY="554.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
-                        <TextField fx:id="txtDataInicioMat" layoutX="796.0" layoutY="181.0" promptText="Data Inicial" text="21122021" />
+                        <TextField fx:id="txtDataInicioMat" layoutX="796.0" layoutY="181.0" promptText="Data Inicial" />
                         <TextField fx:id="txtRefMat" layoutX="796.0" layoutY="206.0" prefHeight="25.0" prefWidth="80.0" promptText="Ref." />
                         <TextField fx:id="txtNivelMat" layoutX="885.0" layoutY="206.0" prefHeight="25.0" prefWidth="80.0" promptText="Nível" />
                         <TextField fx:id="txtTrienioMat" layoutX="796.0" layoutY="234.0" prefHeight="25.0" prefWidth="80.0" promptText="Triênio" />

@@ -68,7 +68,7 @@
                                     <Font name="Book Antiqua Bold" size="20.0" />
                                  </font>
                               </Button>
-                              <Button layoutX="278.0" layoutY="296.0" mnemonicParsing="false" prefHeight="364.0" prefWidth="330.0" />
+                              <Button fx:id="btnTABPANETarefas" layoutX="278.0" layoutY="296.0" mnemonicParsing="false" onAction="#btnTABPANETarefas" prefHeight="364.0" prefWidth="330.0" />
                               <Button fx:id="btnTABPANECalculos" layoutX="822.0" layoutY="387.0" mnemonicParsing="false" onAction="#btnTABPANECalculos" prefHeight="63.0" prefWidth="47.0" />
                            </children>
                         </AnchorPane>

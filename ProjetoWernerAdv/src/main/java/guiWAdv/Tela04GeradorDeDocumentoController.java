@@ -399,9 +399,9 @@ public class Tela04GeradorDeDocumentoController {
 
 		List<String> nomesDocumentos = Arrays.asList("ProcuracaoInterniveis", "ProcuracaoNE", "ProcuracaoPiso",
 				"ProcuracaoNEPiso", "ProcuracaoInterNEPiso", "ProcuracaoInterNE", "ProcuracaoInterPiso",
-				"ContratoIntNEPisoCom", "ContratoIntNEPisoSem", "ContratoInt", "ContratoIntPisoCom", "ContratoPisoCom",
-				"ContratoPisoSem", "ContratoIntPisoSem", "ContratoIntNE", "ContratoNE", "ContratoNEPisoSem",
-				"ContratoNEPisoCom", "DeclaracaoHipo");
+				 "ContratoIntNEPiso", "ContratoInt", 
+				"ContratoPiso", "ContratoIntPiso", "ContratoIntNE", "ContratoNE", "ContratoNEPiso",
+				 "DeclaracaoHipo");
 		choiceBoxDocumento.getItems().addAll(nomesDocumentos);
 
 		// TAB PETIÇÕES INICIAIS
@@ -427,7 +427,11 @@ public class Tela04GeradorDeDocumentoController {
 		// TAB PETIÇÕES INTERCORRENTES
 		// INTERNIVEIS
 		List<String> nomesPetInter = Arrays.asList("Peticao_RPV_interniveis", "Peticao_RPV_interniveis_com_renuncia",
-				"Resposta_Impugnacao_calculo_ERJ_Interniveis", "Peticao_Levantamento"
+				"Resposta_Impugnacao_calculo_ERJ_Interniveis", "Peticao_Levantamento", "Peticao_concordar_calculoscontador_interniveis -", 
+				"Peticao_discordar_calculoscontador_interniveis -", "Peticao_interniveis", "Peticao_Levantamento_2", "Peticao_Levantamento_suc",
+				"Peticao_RPV_interniveis_Valores", "EDs_Honorarios_interniveis", "EDs_Honorarios_RPV_40_SM_interniveis", "Peticao_JGSUC_interniveis", "Peticao_JG_interniveis",
+				"Peticao_GRERJ_reembolso_interniveis", "Peticao_JG_e_RPV_e_reembolso_interniveis", "Peticao_JG_e_RPV_interniveis",
+				"Peticao_RPV_e_reembolso_interniveis"
 
 		);
 		choiceBoxPetInter.getItems().addAll(nomesPetInter);
@@ -435,14 +439,16 @@ public class Tela04GeradorDeDocumentoController {
 		// NE
 		List<String> nomesPetInterNE = Arrays.asList("PeticaoRespostaImpugnacaoERJNE", "EDsAvaliacaoAplicada",
 				"PeticaoconcordandocalculoscontadorNE", "PeticaodescabimentoSuspensaoNE", "PeticaoProvasNE",
-				"PeticaoSobreParametrosNE", "EDs_Sobre_Suspensao_NE"
+				"PeticaoSobreParametrosNE", "EDs_Sobre_Suspensao_NE", "Agravo_Parametro_NE", "CR_Agravo_NE",
+				"CR_AInterno_Agravo_NE", "CR_EDs_Agravo_NE", "CR_RESP_NE", "Peticao_inf_Agravo_parametros_NE",
+				"Peticao_levantamento_NE", "Peticao_valores_RPV_NE"
 
 		);
 		choiceBoxPetInterNE.getItems().addAll(nomesPetInterNE);
 
 		// PISO
 		List<String> nomesPetPiso = Arrays.asList("Replica_Piso", "Provas_Piso", "Alegacoes_Finais_Piso",
-				"CR_Apelacao_Piso", "EDs_Sobre_Suspensao_Piso"
+				"CR_Apelacao_Piso", "EDs_Sobre_Suspensao_Piso", "Agravo_suspensao_Piso", "Peticao_inf_Agravo_suspensao_Piso", "Apelacao_Piso"
 
 		);
 		choiceBoxPetPiso.getItems().addAll(nomesPetPiso);
@@ -1083,7 +1089,7 @@ public class Tela04GeradorDeDocumentoController {
 	private void salvarDocumentoGerado(XWPFDocument doc, String nomeDocumento) {
 		String nome = txtNomePetInter.getText();
 		String outputPath = "C:\\Users\\lizwf\\OneDrive\\Área de Trabalho\\Curso de Java\\ProjetoWernerAdv\\documentosGerados\\"
-				+ nomeDocumento + " - " + nome + "_gerado.docx";
+				+ nomeDocumento + " - " + nome + "_-.docx";
 		try (FileOutputStream out = new FileOutputStream(outputPath)) {
 			doc.write(out);
 
@@ -1755,7 +1761,7 @@ public class Tela04GeradorDeDocumentoController {
 		String nome = txtNomePetInter.getText();
 		String numeroprocesso = txtNumeroProcInter.getText();
 		String outputPath = "C:\\Users\\lizwf\\OneDrive\\Área de Trabalho\\Curso de Java\\ProjetoWernerAdv\\documentosGerados\\"
-				+ nomePeticaoPiso + " - " + nome + " - " + numeroprocesso + "_gerado.docx";
+				+ nomePeticaoPiso + " - " + nome + " - " + numeroprocesso + "_g.docx";
 		try (FileOutputStream out = new FileOutputStream(outputPath)) {
 			doc.write(out);
 			exibirAviso("Documento Gerado", "A Petição foi gerada com sucesso.");

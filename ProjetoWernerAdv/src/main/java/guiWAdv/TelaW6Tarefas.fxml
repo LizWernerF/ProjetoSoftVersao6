@@ -1,10 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21">
+<AnchorPane prefHeight="687.0" prefWidth="1251.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiWAdv.Tela06TarefaController">
    <children>
-      <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="687.0" prefWidth="1251.0" />
+      <TabPane fx:id="tabPane" prefHeight="687.0" prefWidth="1251.0">
+        <tabs>
+         <Tab fx:id="tabPendentes" text="Lista">
+    <content>
+        <AnchorPane prefHeight="667.0" prefWidth="1200.0">
+
+            <!-- Coluna 1 -->
+            <AnchorPane layoutX="10.0" layoutY="40.0" prefHeight="600.0" prefWidth="800.0">
+                <ListView fx:id="tarefasPendentesList" layoutX="0.0" layoutY="16.0" prefHeight="525.0" prefWidth="983.0" />
+
+                <!-- Botões abaixo da ListView -->
+                <Button fx:id="atualizarTarefasBtn" layoutY="553.0" text="Atualizar Tarefas" />
+                <Button fx:id="marcarComoFeitoBtn" layoutX="148.0" layoutY="553.0" text="Marcar como Feito" />
+                <Button fx:id="editarTarefaBtn" layoutX="304.0" layoutY="553.0" onAction="#editarTarefa" text="Editar Tarefa" />
+            </AnchorPane>
+
+            <!-- Coluna 2 -->
+            <AnchorPane layoutX="830.0" layoutY="40.0" prefHeight="600.0" prefWidth="414.0">
+                <Label layoutX="171.0" layoutY="10.0" text="Descrição da Tarefa" />
+                <TextField fx:id="descricaoFieldTab1" layoutX="170.0" layoutY="30.0" prefHeight="23.0" prefWidth="236.0" />
+
+                <Label layoutX="174.0" layoutY="67.0" text="Responsável" />
+                <TextField fx:id="responsavelField" layoutX="171.0" layoutY="84.0" prefHeight="25.0" prefWidth="180.0" />
+
+                <Label layoutX="174.0" layoutY="118.0" text="Cliente" />
+                <TextField fx:id="clienteFieldTab1" layoutX="171.0" layoutY="141.0" prefHeight="16.0" prefWidth="235.0" />
+
+                <Label layoutX="174.0" layoutY="181.0" text="Processo" />
+                <TextField fx:id="processoFieldTab1" layoutX="171.0" layoutY="198.0" prefHeight="21.0" prefWidth="235.0" />
+
+                <Label layoutX="177.0" layoutY="239.0" text="Data Limite" />
+                <TextField fx:id="dataLimiteFieldTab1" layoutX="172.0" layoutY="263.0" prefHeight="25.0" prefWidth="179.0" />
+                        <Button fx:id="editarTarefaBtn1" layoutX="345.0" layoutY="317.0" text="OK" />
+                        <Button fx:id="editarTarefaBtn11" layoutX="224.0" layoutY="414.0" text="Adicionar Tarefa" />
+                        <Button fx:id="editarTarefaBtn111" layoutX="222.0" layoutY="458.0" text="Ver Tarefas feitas" />
+                        <Button fx:id="btnTabGerador" layoutX="220.0" layoutY="502.0" mnemonicParsing="false" onAction="#btnTabGerador" text="Gerar Documento" />
+                        <Label fx:id="labelIDTarefa" layoutX="174.0" layoutY="363.0" prefHeight="17.0" prefWidth="75.0" />
+                        <Label layoutX="176.0" layoutY="300.0" text="Status" />
+                        <TextField fx:id="txtStatusEdit1" layoutX="175.0" layoutY="317.0" />
+            </AnchorPane>
+                     <ImageView fitHeight="59.0" fitWidth="356.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../guiWAdvImagens/icon%20parceria.png" />
+                        </image>
+                     </ImageView>
+                     <Label layoutX="1063.0" layoutY="26.0" text="Para Editar Tarefa" />
+                     <Button fx:id="btnMostraTarefas" layoutX="384.0" layoutY="14.0" mnemonicParsing="false" text="Mostrar Tarefas" />
+        </AnchorPane>
+    </content>
+</Tab>
+          <Tab fx:id="tabAdd" text="Add">
+            <content>
+              <AnchorPane prefHeight="687.0" prefWidth="1251.0">
+                <children>
+                  <Label layoutX="20.0" layoutY="14.0" text="Descrição da Tarefa" />
+                  <TextField fx:id="descricaoFieldTab2" layoutX="20.0" layoutY="34.0" prefWidth="400.0" />
+                  <Label layoutX="20.0" layoutY="74.0" text="Responsável" />
+                  <ChoiceBox fx:id="choiceResponsavel" layoutX="20.0" layoutY="94.0" prefWidth="200.0">  
+                  </ChoiceBox>
+                  <Label layoutX="20.0" layoutY="134.0" text="Cliente" />
+                  <TextField fx:id="txtNomeBusca" layoutX="20.0" layoutY="154.0" prefWidth="300.0" />
+                  <Button fx:id="buscarClienteBtn" layoutX="330.0" layoutY="154.0" onAction="#buscarClientes" text="Buscar" />
+                  <ListView fx:id="listClientesBusca" layoutX="20.0" layoutY="194.0" onEditStart="#onSelecionarCliente" onMouseClicked="#onNomeClienteSelecionado" prefHeight="100.0" prefWidth="400.0" />
+                  <TextField fx:id="clienteFieldTab2" layoutX="20.0" layoutY="304.0" prefWidth="400.0" promptText="Cliente selecionado" />
+                  <Label layoutX="20.0" layoutY="344.0" text="Processos" />
+                  <ListView fx:id="listProcNomes" layoutX="20.0" layoutY="364.0" onEditStart="#onSelecionarProcesso" onMouseClicked="#onProcessoSelecionado" prefHeight="100.0" prefWidth="400.0" />
+                  <TextField fx:id="processoFieldTab2" layoutX="20.0" layoutY="474.0" prefWidth="400.0" promptText="Processo selecionado" />
+                  <Label layoutX="20.0" layoutY="514.0" text="Data Limite" />
+                  <DatePicker fx:id="dataLimiteField" layoutX="20.0" layoutY="534.0" prefWidth="200.0" />
+                  <Button fx:id="adicionarTarefaBtn" layoutX="20.0" layoutY="590.0" text="Adicionar Tarefa" />
+                        <Label layoutX="264.0" layoutY="514.0" text="Status" />
+                        <ChoiceBox fx:id="choiceStatus" layoutX="264.0" layoutY="534.0" prefWidth="150.0" />
+                        <TextArea layoutX="571.0" layoutY="23.0" prefHeight="588.0" prefWidth="640.0" text="Modelos de Descrição de Tarefas:&#10;&#10;Interníveis:&#10;Responder Impugnação Estado&#10;Pedir Homologação em razão de concordância do Estado&#10;Petição com valores para RPV e GRERJ&#10;Petição Pedindo Levantamento de valor Depositado&#10;&#10;&#10;Nova Escola:&#10;Resposta a Impugnação do ERJ&#10;Petição Em provas&#10;EDs sobre suspensão&#10;EDs sobre incompetência&#10;EDs sobre parâmetros utilizados&#10;Petição sobre calculos do Contador&#10;Contrarrazões a Recurso&#10;Agravo de Instrumento NE&#10;&#10;Piso&#10;Réplica Piso&#10;Em provas Piso&#10;Alegações Finais Piso&#10;EDs sobre suspensão&#10;Apelação Piso&#10;Contrarrazões a Apelação Piso">
+                           <font>
+                              <Font name="Calibri Light" size="13.0" />
+                           </font>
+                        </TextArea>
+                </children>
+              </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tabFeitas" text="Feitas">
+           <content>
+        <AnchorPane prefHeight="667.0" prefWidth="1200.0">
+            <!-- Título -->
+            <Label layoutX="456.0" layoutY="7.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Tarefas Feitas W e M&amp;A" />
+
+            <!-- Coluna 1 -->
+            <AnchorPane layoutX="10.0" layoutY="40.0" prefHeight="600.0" prefWidth="800.0">
+                <ListView fx:id="tarefasFeitasList" layoutX="0.0" layoutY="16.0" prefHeight="525.0" prefWidth="1194.0" />
+            </AnchorPane>
+
+            <!-- Coluna 2 -->
+            <AnchorPane layoutX="820.0" layoutY="40.0" prefHeight="600.0" prefWidth="380.0">
+                        <children>
+                   <Button fx:id="marcarComoPendenteBtn" layoutX="261.0" layoutY="565.0" text="Marcar como Pendente" />
+   
+                   <!-- Botões abaixo da ListView -->
+                   <Button fx:id="atualizarTarefasBtn3" layoutX="138.0" layoutY="566.0" onAction="#handleAtualizarTarefasFeitas" text="Atualizar Tarefas" />
+                        </children>
+            </AnchorPane>
+        </AnchorPane>
+    </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>
